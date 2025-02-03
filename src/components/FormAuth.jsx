@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React from "react";
 import { Form, Link } from "react-router-dom";
 import FormInput from "./Form/FormInput";
+=======
+import React from 'react';
+import { Form, Link } from 'react-router-dom';
+import FormInput from './Form/FormInput';
+>>>>>>> b6020ed (first commit)
 
 const FormAuth = ({ isRegister }) => {
   return (
@@ -10,7 +16,11 @@ const FormAuth = ({ isRegister }) => {
         className="card w-96 p-8 bg-base-300 shadow-lg flex flex-col gap-y-4"
       >
         <h4 className="text-center text-3xl font-bold">
+<<<<<<< HEAD
           {isRegister ? "Register" : "Login"}
+=======
+          {isRegister ? 'Register' : 'Login'}
+>>>>>>> b6020ed (first commit)
         </h4>
         {isRegister ? (
           <FormInput type="name" name="name" label="Username" />
@@ -19,7 +29,11 @@ const FormAuth = ({ isRegister }) => {
         <FormInput type="password" name="password" label="Password" />
         <div className="mt-4">
           <button type="submit" className="btn btn-primary btn-block">
+<<<<<<< HEAD
             {isRegister ? "Register" : "Login"}
+=======
+            {isRegister ? 'Register' : 'Login'}
+>>>>>>> b6020ed (first commit)
           </button>
         </div>
         {isRegister ? (

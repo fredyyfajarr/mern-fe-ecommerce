@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+=======
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+>>>>>>> b6020ed (first commit)
 
 const Header = () => {
   const user = useSelector((state) => state.userState.user);
   return (
+<<<<<<< HEAD
     <header className="bg-neutral shadow-lg">
       <div className="mx-auto max-w-6xl px-8 py-4">
         <nav className="flex justify-between items-center">
@@ -45,6 +52,24 @@ const Header = () => {
             )}
           </div>
         </nav>
+=======
+    <header className="bg-neutral py-2 text-neutral-content">
+      <div className="mx-auto max-w-6xl px-8 flex justify-center sm:justify-end">
+        {user ? (
+          <div className="flex gap-x-2 sm:gap-x-8 items-center">
+            <p className="text-xs sm:text-sm">Hello, {user.name}</p>
+          </div>
+        ) : (
+          <div className="flex gap-x-6 justify-center items-center">
+            <Link to="/login" className="link link-hover text-xs sm:text-sm">
+              Sign In
+            </Link>
+            <Link to="/register" className="link link-hover text-xs sm:text-sm">
+              Sign Up
+            </Link>
+          </div>
+        )}
+>>>>>>> b6020ed (first commit)
       </div>
     </header>
   );

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import NavList from "./NavList";
 import { NavLink } from "react-router-dom";
@@ -10,12 +11,27 @@ import { logoutUser } from "../features/userSlice";
 import { useNavigate } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
 import { clearCartItem } from "../features/cartSlice";
+=======
+import React from 'react';
+import NavList from './NavList';
+import { NavLink } from 'react-router-dom';
+import { BsCart3 } from 'react-icons/bs';
+import { GiRunningShoe } from 'react-icons/gi';
+import { FaBarsStaggered } from 'react-icons/fa6';
+import { useSelector, useDispatch } from 'react-redux';
+import customAPI from '../api';
+import { logoutUser } from '../features/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { BsPerson } from 'react-icons/bs';
+import { clearCartItem } from '../features/cartSlice';
+>>>>>>> b6020ed (first commit)
 
 const Nav = () => {
   const user = useSelector((state) => state.userState.user);
   const countInCart = useSelector((state) => state.cartState.numItemsInCart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+<<<<<<< HEAD
   const [isOpen, setIsOpen] = React.useState(false);
 
   const handlingLogout = async () => {
@@ -32,10 +48,28 @@ const Nav = () => {
   };
   return (
     <nav className="bg-base-200 sticky top-0 z-50 shadow-md">
+=======
+
+  const handlingLogout = async () => {
+    try {
+      await customAPI.get('/auth/logout');
+      dispatch(logoutUser());
+      dispatch(clearCartItem());
+      navigate('/');
+    } catch (error) {
+      dispatch(logoutUser());
+      dispatch(clearCartItem());
+      navigate('/');
+    }
+  };
+  return (
+    <nav className="bg-base-200">
+>>>>>>> b6020ed (first commit)
       <div className="navbar mx-auto max-w-6xl px-8">
         <div className="navbar-start">
           <NavLink
             to="/"
+<<<<<<< HEAD
             className="hidden lg:flex btn btn-primary text-3xl items-center rounded-full hover:scale-105 transition-all duration-200"
           >
             <GiRunningShoe className="hover:rotate-12 transition-all" />
@@ -70,6 +104,20 @@ const Nav = () => {
               className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-200 rounded-box w-52 ${
                 isOpen ? "block" : "hidden"
               }`}
+=======
+            className="hidden lg:flex btn btn-primary text-3xl items-center rounded-full"
+          >
+            <GiRunningShoe />
+          </NavLink>
+          {/* Mobile Device */}
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <FaBarsStaggered />
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52"
+>>>>>>> b6020ed (first commit)
             >
               <NavList />
             </ul>
@@ -81,6 +129,7 @@ const Nav = () => {
             </ul>
           </div>
         </div>
+<<<<<<< HEAD
         <div className="navbar-end gap-2">
           <NavLink
             to="/carts"
@@ -89,11 +138,19 @@ const Nav = () => {
             <div className="indicator">
               <BsCart3 className="text-xl" />
               <span className="badge badge-primary badge-sm indicator-item animate-pulse">
+=======
+        <div className="navbar-end">
+          <NavLink to="/carts" className="btn btn-ghost btn-circle btn-md">
+            <div className="indicator">
+              <BsCart3 />
+              <span className="badge badge-primary badge-sm indicator-item">
+>>>>>>> b6020ed (first commit)
                 {countInCart}
               </span>
             </div>
           </NavLink>
           {user && (
+<<<<<<< HEAD
             <details className="dropdown dropdown-end">
               <summary className="btn btn-ghost btn-circle btn-md hover:bg-primary hover:text-white transition-all">
                 <BsPerson className="text-xl" />
@@ -121,6 +178,18 @@ const Nav = () => {
                   >
                     Logout
                   </button>
+=======
+            <details className="dropdown">
+              <summary className="btn btn-ghost btn-circle btn-md">
+                <BsPerson />
+              </summary>
+              <ul className="menu dropdown-content bg-base-100 rounded-circle z-[1] w-52 p-2 shadow">
+                <li></li>
+                <li>
+                  <a>
+                    <button onClick={handlingLogout}>Logout</button>
+                  </a>
+>>>>>>> b6020ed (first commit)
                 </li>
               </ul>
             </details>

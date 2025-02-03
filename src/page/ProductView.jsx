@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import customAPI from "../api";
 import { Link, useLoaderData } from "react-router-dom";
@@ -5,12 +6,25 @@ import Filter from "../components/Filter";
 import CartProduct from "../components/CartProduct";
 import Pagination from "../components/Pagination";
 import { useSelector } from "react-redux";
+=======
+import React from 'react';
+import customAPI from '../api';
+import { Link, useLoaderData } from 'react-router-dom';
+import Filter from '../components/Filter';
+import CartProduct from '../components/CartProduct';
+import Pagination from '../components/Pagination';
+import { useSelector } from 'react-redux';
+>>>>>>> b6020ed (first commit)
 
 export const loader = async ({ request }) => {
   const params = Object.fromEntries([
     ...new URL(request.url).searchParams.entries(),
   ]);
+<<<<<<< HEAD
   const { data } = await customAPI.get("/product", { params: params });
+=======
+  const { data } = await customAPI.get('/product', { params: params });
+>>>>>>> b6020ed (first commit)
 
   // console.log(params);
   const products = data.data;
@@ -25,6 +39,7 @@ const ProductView = () => {
   const { products, pagination } = useLoaderData();
 
   return (
+<<<<<<< HEAD
     <div className="container mx-auto px-4 py-8">
       <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-secondary/10 rounded-lg p-8 mb-8 animate-gradient-x shadow-lg">
         <h1 className="text-4xl font-bold text-primary mb-4 animate-fade-in">
@@ -54,11 +69,19 @@ const ProductView = () => {
                 clipRule="evenodd"
               />
             </svg>
+=======
+    <>
+      <Filter />
+      {user && user.role === 'owner' && (
+        <div className="flex justify-end">
+          <Link to="/product/create" className="btn btn-secondary">
+>>>>>>> b6020ed (first commit)
             Add Product
           </Link>
         </div>
       )}
 
+<<<<<<< HEAD
       <div className="bg-base-200 backdrop-blur-sm bg-opacity-80 rounded-lg p-6 mb-6 shadow-md hover:shadow-lg transition-shadow duration-300">
         <h3 className="text-xl text-primary font-bold text-right flex items-center justify-end gap-2">
           <span>Total Products:</span>
@@ -111,6 +134,26 @@ const ProductView = () => {
         </div>
       </div>
     </div>
+=======
+      <h3 className="text-lg text-primary font-bold text-right my-3">
+        Total : {pagination.totalProduct} Product
+      </h3>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-5">
+        {!products.length ? (
+          <h1 className="text-3xl font-bold mt-5 text-center col-span-4">
+            Product not Found!
+          </h1>
+        ) : (
+          products.map((product) => (
+            <CartProduct product={product} key={product._id} user={user} />
+          ))
+        )}
+      </div>
+      <div className="mt-5 flex justify-center">
+        <Pagination />
+      </div>
+    </>
+>>>>>>> b6020ed (first commit)
   );
 };
 

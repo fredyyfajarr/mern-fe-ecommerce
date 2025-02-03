@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -10,6 +11,20 @@ import { addItem } from "../features/cartSlice";
 const DetailProduct = () => {
   let { id } = useParams();
   const [product, setProduct] = useState("");
+=======
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import customAPI from '../api';
+import { FaPlus } from 'react-icons/fa';
+import { generateSelectAmount, priceFormat } from '../utils/';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/cartSlice';
+
+const DetailProduct = () => {
+  let { id } = useParams();
+  const [product, setProduct] = useState('');
+>>>>>>> b6020ed (first commit)
   const [amount, setAmount] = useState(1);
 
   // store
@@ -43,6 +58,7 @@ const DetailProduct = () => {
   }, []);
 
   return (
+<<<<<<< HEAD
     <section className="container mx-auto px-4 py-8">
       <div className="card lg:card-side bg-base-300 shadow-xl rounded-xl overflow-hidden">
         <figure className="lg:w-1/2">
@@ -119,6 +135,61 @@ const DetailProduct = () => {
                 </button>
               </div>
             )}
+=======
+    <section>
+      <div className="card lg:card-side bg-base-300 shadow-xl">
+        <figure>
+          <div className="relative">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="h-screen h-[500px] object-cover"
+            />
+            {product.stock < 1 && (
+              <span className="absolute top-0 right-0 bg-error font-bold text-4xl">
+                Sold Out!!
+              </span>
+            )}
+          </div>
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">{product.name}</h2>
+          <span className="text-3xl mt-2 text-accent font-bold">
+            {priceFormat(product.price)}
+          </span>
+          <span className="mt-3 font-bold">Stok : {product.stock}</span>
+          <div className="badge badge-primary badge-outline">
+            {product.category}
+          </div>
+          <p className="mt-3">{product.description}</p>
+          <div className="card-actions justify-end">
+            <div className="p-8 flex flex-col gap-y-4">
+              {product.stock > 0 && (
+                <>
+                  <label className="form-control">
+                    <label className="label">
+                      <span className="capitalize label-text">Amount</span>
+                    </label>
+                    <select
+                      name="amount"
+                      className="select select-bordered"
+                      id=""
+                      onChange={handleAmount}
+                    >
+                      {generateSelectAmount(product.stock)}
+                    </select>
+                  </label>
+                  <button
+                    className="btn btn-primary btn-md"
+                    onClick={handleCart}
+                  >
+                    <FaPlus />
+                    Add to Cart
+                  </button>
+                </>
+              )}
+            </div>
+>>>>>>> b6020ed (first commit)
           </div>
         </div>
       </div>

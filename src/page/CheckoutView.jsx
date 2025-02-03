@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import CartTotal from "../components/CartTotal";
 import FormInput from "../components/Form/FormInput";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,6 +14,23 @@ const insertSnapScript = () => {
     script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
     script.setAttribute(
       "data-client-key",
+=======
+import CartTotal from '../components/CartTotal';
+import FormInput from '../components/Form/FormInput';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import customAPI from '../api';
+import { toast } from 'react-toastify';
+import { clearCartItem } from '../features/cartSlice';
+import { redirect, useNavigate } from 'react-router-dom';
+
+const insertSnapScript = () => {
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = 'https://app.sandbox.midtrans.com/snap/snap.js';
+    script.setAttribute(
+      'data-client-key',
+>>>>>>> b6020ed (first commit)
       import.meta.env.VITE_CLIENT_MIDTRANS
     );
     script.onload = () => resolve();
@@ -23,8 +41,13 @@ const insertSnapScript = () => {
 export const loader = (storage) => () => {
   const user = storage.getState().userState.user;
   if (!user) {
+<<<<<<< HEAD
     toast.warn("Please login! for access this page");
     return redirect("/login");
+=======
+    toast.warn('Please login! for access this page');
+    return redirect('/login');
+>>>>>>> b6020ed (first commit)
   }
   return null;
 };
@@ -56,7 +79,11 @@ const CheckoutView = () => {
     });
 
     try {
+<<<<<<< HEAD
       const response = await customAPI.post("/order", {
+=======
+      const response = await customAPI.post('/order', {
+>>>>>>> b6020ed (first commit)
         email: data.email,
         firstName: data.firstname,
         lastName: data.lastname,
@@ -71,20 +98,35 @@ const CheckoutView = () => {
         onSuccess: function (result) {
           console.log(result);
           dispatch(clearCartItem());
+<<<<<<< HEAD
           navigate("/order");
+=======
+          navigate('/order');
+>>>>>>> b6020ed (first commit)
         },
         // Optional
         onPending: function (result) {
           console.log(result);
+<<<<<<< HEAD
           alert("Pending");
+=======
+          alert('Pending');
+>>>>>>> b6020ed (first commit)
         },
         // Optional
         onError: function (result) {
           console.log(result);
+<<<<<<< HEAD
           alert("Failed");
         },
       });
       toast.success("Order Success");
+=======
+          alert('Failed');
+        },
+      });
+      toast.success('Order Success');
+>>>>>>> b6020ed (first commit)
     } catch (error) {
       const errorMessage = error?.response?.data?.message;
       toast.error(errorMessage);
@@ -92,6 +134,7 @@ const CheckoutView = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -176,6 +219,41 @@ const CheckoutView = () => {
         </div>
       </div>
     </div>
+=======
+    <>
+      <div className="border-b border-primary pb-5 mt-5">
+        <h2 className="text-2xl font-bold capitalize">Checkout product!</h2>
+      </div>
+      <div className="mt-8 grid gap-y-8 gap-x-2 lg:grid-cols-12">
+        {/* Form */}
+        <div className="lg:col-span-8">
+          <form
+            method="POST"
+            className="bg-base-300 rounded-2xl-md grid-y-2 p-5 items-center"
+            onSubmit={handleCheckout}
+          >
+            <div className="grid grid-cols-2 gap-x-4">
+              <FormInput label="First Name" type="name" name="firstname" />
+              <FormInput label="Last Name" type="name" name="lastname" />
+            </div>
+            <FormInput
+              label="Email"
+              type="email"
+              name="email"
+              defaultValue={user.email}
+            />
+            <FormInput label="Phone" type="name" name="phone" />
+            <button type="submit" className="btn mt-8 btn-primary w-full">
+              Proceed to Payment
+            </button>
+          </form>
+        </div>
+        <div className="lg:col-span-4 lg:pl-4">
+          <CartTotal />
+        </div>
+      </div>
+    </>
+>>>>>>> b6020ed (first commit)
   );
 };
 

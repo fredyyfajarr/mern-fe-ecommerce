@@ -1,12 +1,21 @@
+<<<<<<< HEAD
 import React from "react";
 import { Form, Link } from "react-router-dom";
 import FormInput from "./Form/FormInput";
 import FormSelect from "./Form/FormSelect";
 import { useLoaderData } from "react-router-dom";
+=======
+import React from 'react';
+import { Form, Link } from 'react-router-dom';
+import FormInput from './Form/FormInput';
+import FormSelect from './Form/FormSelect';
+import { useLoaderData } from 'react-router-dom';
+>>>>>>> b6020ed (first commit)
 
 const Filter = () => {
   const { params } = useLoaderData();
   const { name, category } = params;
+<<<<<<< HEAD
   const categories = ["sepatu", "baju", "kemeja", "celana"];
 
   return (
@@ -54,6 +63,33 @@ const Filter = () => {
         </div>
       </Form>
     </div>
+=======
+  const categories = ['sepatu', 'baju', 'kemeja', 'celana'];
+  return (
+    <Form
+      method="get"
+      className="bg-base=300 rounded-md px-8 py-4 grid gap-x-4 gap-y-3 grid-cols-2 items-center"
+    >
+      <FormInput
+        label="Search Product"
+        type="search"
+        name="name"
+        defaultValue={name}
+      />
+      <FormSelect
+        label="Select Category"
+        name="category"
+        list={categories}
+        defaultValue={category}
+      />
+      <button type="submit" className="btn btn-primary">
+        SEARCH
+      </button>
+      <Link to="/products" className="btn btn-secondary">
+        RESET
+      </Link>
+    </Form>
+>>>>>>> b6020ed (first commit)
   );
 };
 

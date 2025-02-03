@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-key */
 // eslint-disable-next-line no-unused-vars
+<<<<<<< HEAD
 import CartProduct from "../components/CartProduct";
 import customAPI from "../api";
 import { useLoaderData } from "react-router-dom";
@@ -7,6 +8,15 @@ import Hero from "../components/Hero";
 
 export const loader = async ({ request }) => {
   const { data } = await customAPI.get("/product?limit=3");
+=======
+import CartProduct from '../components/CartProduct';
+import customAPI from '../api';
+import { useLoaderData } from 'react-router-dom';
+import Hero from '../components/Hero';
+
+export const loader = async ({ request }) => {
+  const { data } = await customAPI.get('/product?limit=3');
+>>>>>>> b6020ed (first commit)
 
   const products = data.data;
   return { products };
@@ -15,6 +25,7 @@ export const loader = async ({ request }) => {
 const HomeView = () => {
   const { products } = useLoaderData();
   return (
+<<<<<<< HEAD
     <div className="min-h-screen">
       <Hero />
 
@@ -39,6 +50,21 @@ const HomeView = () => {
         </div>
       </div>
     </div>
+=======
+    <>
+      <div>
+        <Hero />
+      </div>
+      <div className="border-b border-primary pb-5 mt-5">
+        <h2 className="text-2xl font-bold capitalize">Product List</h2>
+      </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+        {products.map((product) => (
+          <CartProduct product={product} key={product._id} />
+        ))}
+      </div>
+    </>
+>>>>>>> b6020ed (first commit)
   );
 };
 
