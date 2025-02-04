@@ -1,47 +1,25 @@
-<<<<<<< HEAD
-import FormInput from "../components/Form/FormInput";
-import FormSelect from "../components/Form/FormSelect";
-import FormTextArea from "../components/Form/FormTextArea";
-import customAPI from "../api";
-import { toast } from "react-toastify";
-import { useNavigate, redirect } from "react-router-dom";
-=======
 import FormInput from '../components/Form/FormInput';
 import FormSelect from '../components/Form/FormSelect';
 import FormTextArea from '../components/Form/FormTextArea';
 import customAPI from '../api';
 import { toast } from 'react-toastify';
 import { useNavigate, redirect } from 'react-router-dom';
->>>>>>> b6020ed (first commit)
 
 export const loader = (store) => async () => {
   const user = store.getState().userState.user;
   if (!user) {
-<<<<<<< HEAD
-    toast.warn("Please login! for access this page");
-    return redirect("/login");
-  }
-  if (user.role != "owner") {
-    toast.warn("You are not allowed to access this page");
-    return redirect("/");
-=======
     toast.warn('Please login! for access this page');
     return redirect('/login');
   }
   if (user.role != 'owner') {
     toast.warn('You are not allowed to access this page');
     return redirect('/');
->>>>>>> b6020ed (first commit)
   }
   return null;
 };
 
 const CreateProductView = () => {
-<<<<<<< HEAD
-  const categories = ["sepatu", "baju", "kemeja", "celana"];
-=======
   const categories = ['sepatu', 'baju', 'kemeja', 'celana'];
->>>>>>> b6020ed (first commit)
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -52,26 +30,12 @@ const CreateProductView = () => {
     try {
       // upload file
       const responseFileUpload = await customAPI.post(
-<<<<<<< HEAD
-        "product/file-upload",
-=======
         'product/file-upload',
->>>>>>> b6020ed (first commit)
         {
           image: data.image,
         },
         {
           headers: {
-<<<<<<< HEAD
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log("Response Image", responseFileUpload.data.url);
-
-      // create Product
-      await customAPI.post("/product", {
-=======
             'Content-Type': 'multipart/form-data',
           },
         }
@@ -80,7 +44,6 @@ const CreateProductView = () => {
 
       // create Product
       await customAPI.post('/product', {
->>>>>>> b6020ed (first commit)
         name: data.name,
         price: data.price,
         stock: data.stock,
@@ -89,13 +52,8 @@ const CreateProductView = () => {
         image: responseFileUpload.data.url,
       });
 
-<<<<<<< HEAD
-      toast.success("Add Product Success");
-      navigate("/products");
-=======
       toast.success('Add Product Success');
       navigate('/products');
->>>>>>> b6020ed (first commit)
     } catch (error) {
       const errorMessage = error?.response?.data?.message;
       toast.error(errorMessage);
@@ -103,7 +61,6 @@ const CreateProductView = () => {
   };
 
   return (
-<<<<<<< HEAD
     <div className="min-h-screen p-4 bg-gray-50">
       <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-center text-primary mb-8">
@@ -187,7 +144,7 @@ const CreateProductView = () => {
           <div className="flex items-center justify-end space-x-4">
             <button
               type="button"
-              onClick={() => navigate("/products")}
+              onClick={() => navigate('/products')}
               className="btn btn-outline btn-md"
             >
               Batal
@@ -199,30 +156,6 @@ const CreateProductView = () => {
         </form>
       </div>
     </div>
-=======
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <label className="form-control">
-        <label className="label">
-          <span className="label-text capitalize">Product Image</span>
-        </label>
-        <input
-          type="file"
-          name="image"
-          className="file-input file-input-bordered file-input-primary w-full max-w-xs"
-        />
-      </label>
-      <FormSelect name="category" label="Choose Category" list={categories} />
-      <FormInput name="name" label="Product Name" type="text" />
-      <FormInput name="price" label="Product Price" type="number" />
-      <FormInput name="stock" label="Product Stock" type="number" />
-      <FormTextArea name="description" label="Product Description" />
-      <input
-        type="submit"
-        value="Add Product"
-        className="btn btn-primary btn-block mt-5 btn-md"
-      />
-    </form>
->>>>>>> b6020ed (first commit)
   );
 };
 

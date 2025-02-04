@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-<<<<<<< HEAD
-import React from "react";
+import React from 'react';
 
 const AboutView = () => {
   return (
@@ -94,40 +93,6 @@ const AboutView = () => {
           </div>
         </div>
       </div>
-=======
-import React from 'react';
-
-const AboutView = () => {
-  return (
-    <div className="about-container bg-base-200 p-8">
-      <h1 className="text-4xl font-bold mb-4">Tentang Kami</h1>
-      <p className="text-lg mb-4">
-        Selamat datang di toko online kami! Kami berdedikasi untuk memberikan
-        produk terbaik dan layanan pelanggan yang luar biasa.
-      </p>
-      <h2 className="text-2xl font-semibold mb-2">Misi Kami</h2>
-      <p className="text-lg mb-4">
-        Misi kami adalah menyediakan produk berkualitas tinggi dengan harga
-        terjangkau, serta memberikan pengalaman belanja yang menyenangkan dan
-        mudah.
-      </p>
-      <h2 className="text-2xl font-semibold mb-2">Visi Kami</h2>
-      <p className="text-lg mb-4">
-        Visi kami adalah menjadi toko online terkemuka yang dikenal karena
-        keunggulan produk dan layanan pelanggan.
-      </p>
-      <h2 className="text-2xl font-semibold mb-2">Tim Kami</h2>
-      <p className="text-lg mb-4">
-        Kami memiliki tim yang terdiri dari profesional berpengalaman yang
-        berdedikasi untuk memberikan layanan terbaik kepada pelanggan kami.
-      </p>
-      <h2 className="text-2xl font-semibold mb-2">Kontak Kami</h2>
-      <p className="text-lg mb-4">
-        Jika Anda memiliki pertanyaan atau membutuhkan bantuan, jangan ragu
-        untuk menghubungi kami melalui email di support@toko-online.com atau
-        telepon di (021) 123-4567.
-      </p>
->>>>>>> b6020ed (first commit)
     </div>
   );
 };

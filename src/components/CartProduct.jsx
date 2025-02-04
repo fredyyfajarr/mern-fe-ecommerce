@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import { Link } from "react-router-dom";
-import { priceFormat } from "../utils";
-import { FaTrash, FaPencilAlt } from "react-icons/fa";
-import customAPI from "../api";
-import { toast } from "react-toastify";
-import { useRevalidator } from "react-router-dom";
-=======
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { priceFormat } from '../utils';
@@ -14,18 +5,13 @@ import { FaTrash, FaPencilAlt } from 'react-icons/fa';
 import customAPI from '../api';
 import { toast } from 'react-toastify';
 import { useRevalidator } from 'react-router-dom';
->>>>>>> b6020ed (first commit)
 
 const CartProduct = ({ product, user }) => {
   const { revalidate } = useRevalidator();
 
   const handleDelete = async () => {
     await customAPI.delete(`/product/${product._id}`);
-<<<<<<< HEAD
-    toast.info("Delete product successfully");
-=======
     toast.info('Delete product successfully');
->>>>>>> b6020ed (first commit)
     revalidate();
   };
 
@@ -54,7 +40,6 @@ const CartProduct = ({ product, user }) => {
 
   return (
     <>
-<<<<<<< HEAD
       <div
         className="card bg-base-300 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
         key={product._id}
@@ -72,7 +57,7 @@ const CartProduct = ({ product, user }) => {
           )}
         </figure>
         <div className="card-body">
-          {user && user.role === "owner" && (
+          {user && user.role === 'owner' && (
             <div className="flex justify-end gap-x-3">
               <FaTrash
                 onClick={confirmDeleteProduct}
@@ -97,36 +82,6 @@ const CartProduct = ({ product, user }) => {
               to={`/product/${product._id}`}
               className="btn btn-primary hover:scale-105 transition-transform duration-200 rounded-full"
             >
-=======
-      <div className="card bg-base-300 shadow-xl" key={product._id}>
-        <figure>
-          <div className="relative">
-            <img src={product.image} alt={product.name} />
-            {product.stock < 1 && (
-              <span className="absolute top-0 right-0 bg-error font-bold text-2xl">
-                Sold Out!!
-              </span>
-            )}
-          </div>
-        </figure>
-        <div className="card-body">
-          {user && user.role === 'owner' && (
-            <div className="flex justify-end gap-x-3">
-              <FaTrash
-                onClick={confirmDeleteProduct}
-                className="text-red-500 cursor-pointer"
-              />
-              <Link to={`/product/${product._id}/edit`}>
-                <FaPencilAlt className="text-info cursor-pointer" />
-              </Link>
-            </div>
-          )}
-          <h2 className="card-title text-primary">{product.name}</h2>
-          <p className="font-bold text-accent">{priceFormat(product.price)}</p>
-          <p>{product.description.substring(0, 50)}</p>
-          <div className="card-actions justify-end">
-            <Link to={`/product/${product._id}`} className="btn btn-primary">
->>>>>>> b6020ed (first commit)
               Buy Now
             </Link>
           </div>

@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import CartList from "../components/CartList";
-import CartTotal from "../components/CartTotal";
-=======
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import CartList from '../components/CartList';
 import CartTotal from '../components/CartTotal';
->>>>>>> b6020ed (first commit)
 
 const CartView = () => {
   const user = useSelector((state) => state.userState.user);

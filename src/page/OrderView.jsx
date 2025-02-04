@@ -1,31 +1,11 @@
-<<<<<<< HEAD
-import { redirect, useLoaderData } from "react-router-dom";
-import { toast } from "react-toastify";
-import { priceFormat } from "../utils";
-import customAPI from "../api";
-=======
 import { redirect, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { priceFormat } from '../utils';
 import customAPI from '../api';
->>>>>>> b6020ed (first commit)
 
 export const loader = (storage) => async () => {
   const user = storage.getState().userState.user;
   if (!user) {
-<<<<<<< HEAD
-    toast.warn("Please login! for access this page");
-    return redirect("/login");
-  }
-
-  let orders;
-  if (user.role !== "owner") {
-    const { data } = await customAPI.get("order/current/user");
-
-    orders = data.data;
-  } else {
-    const { data } = await customAPI.get("order");
-=======
     toast.warn('Please login! for access this page');
     return redirect('/login');
   }
@@ -37,7 +17,6 @@ export const loader = (storage) => async () => {
     orders = data.data;
   } else {
     const { data } = await customAPI.get('order');
->>>>>>> b6020ed (first commit)
 
     orders = data.data;
   }
@@ -49,7 +28,6 @@ const OrderView = () => {
   const { orders } = useLoaderData();
   if (!orders.length) {
     return (
-<<<<<<< HEAD
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="text-center p-8 bg-base-200 rounded-lg shadow-lg">
           <h1 className="text-3xl font-bold text-primary">
@@ -110,11 +88,11 @@ const OrderView = () => {
                   {priceFormat(item.total)}
                 </td>
                 <td className="px-4 py-3">
-                  {item.status === "pending" ? (
+                  {item.status === 'pending' ? (
                     <span className="px-3 py-1 rounded-full text-sm bg-info/20 text-info">
                       Pending
                     </span>
-                  ) : item.status === "success" ? (
+                  ) : item.status === 'success' ? (
                     <span className="px-3 py-1 rounded-full text-sm bg-success/20 text-success">
                       Success
                     </span>
@@ -136,11 +114,11 @@ const OrderView = () => {
           <div key={item._id} className="bg-base-100 p-4 rounded-lg shadow-md">
             <div className="flex justify-between items-center mb-3">
               <span className="font-bold">Order #{index + 1}</span>
-              {item.status === "pending" ? (
+              {item.status === 'pending' ? (
                 <span className="px-3 py-1 rounded-full text-sm bg-info/20 text-info">
                   Pending
                 </span>
-              ) : item.status === "success" ? (
+              ) : item.status === 'success' ? (
                 <span className="px-3 py-1 rounded-full text-sm bg-success/20 text-success">
                   Success
                 </span>
@@ -153,7 +131,7 @@ const OrderView = () => {
 
             <div className="space-y-2">
               <p className="text-sm text-gray-600">
-                Pemesan:{" "}
+                Pemesan:{' '}
                 <span className="font-medium">
                   {item.firstName} {item.lastName}
                 </span>
@@ -189,60 +167,6 @@ const OrderView = () => {
           </div>
         ))}
       </div>
-=======
-      <h1 className="text-center text-primary font-bold text-3xl border-b border-t border-secondary py-5">
-        Your order still empty
-      </h1>
-    );
-  }
-  return (
-    <div className="overflow-x-auto">
-      <table className="table table-xs table-pin-rows table-pin-cols">
-        <thead>
-          <tr>
-            <td>No .</td>
-            <td>Order By</td>
-            <td>Product</td>
-            <td>Total</td>
-            <td>Payment Status</td>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((item, index) => (
-            <tr key={item._id} className="hover">
-              <td>{index + 1}</td>
-              <td>
-                {item.firstName} {item.lastName}
-              </td>
-              <td>
-                <ul className="list-disc">
-                  {item.itemsDetail.map((itemProduct) => (
-                    <li key={itemProduct.product}>
-                      {itemProduct.name} <br />
-                      <span className="font-bold">
-                        Total {itemProduct.quantity} Product
-                      </span>{' '}
-                      <br />
-                      {priceFormat(itemProduct.price)}
-                    </li>
-                  ))}
-                </ul>
-              </td>
-              <td>{priceFormat(item.total)}</td>
-              <td>
-                {item.status === 'pending' ? (
-                  <span className="btn btn-info btn-sm">Pending</span>
-                ) : item.status === 'success' ? (
-                  <span className="btn btn-success btn-sm">Success</span>
-                ) : (
-                  <span className="btn btn-error btn-sm">Failed</span>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
->>>>>>> b6020ed (first commit)
     </div>
   );
 };
