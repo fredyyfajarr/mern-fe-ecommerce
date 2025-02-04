@@ -28,7 +28,6 @@ const Header = () => {
             {user ? (
               <div className="flex items-center space-x-4">
                 <button className="btn btn-primary btn-sm">Dashboard</button>
-                <button className="btn btn-ghost btn-sm">Logout</button>
               </div>
             ) : (
               <div className="flex space-x-3">
