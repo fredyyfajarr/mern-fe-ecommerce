@@ -20,10 +20,10 @@ const Hero = () => {
             </Link>
           </div>
         </div>
-        <div className="hidden lg:carousel carousel-center bg-neutral rounded-box space-x-4 p-4">
+        <div className="hidden lg:carousel rounded-box w-full">
           {products.map((item) => (
-            <div className="carousel-item" key={item._id}>
-              <img src={item.image} className="rounded-box" />
+            <div className="carousel-item w-full" key={item._id}>
+              <img src={item.image} className="w-full" alt="Product Carousel" />
             </div>
           ))}
         </div>
