@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key */
-// eslint-disable-next-line no-unused-vars
 import CartProduct from '../components/CartProduct';
 import customAPI from '../api';
 import { useLoaderData } from 'react-router-dom';
@@ -32,8 +30,16 @@ const HomeView = () => {
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {products.map((product) => (
+<<<<<<< HEAD
             <div className="transform transition duration-300 hover:scale-105">
               <CartProduct product={product} key={product._id} />
+=======
+            <div
+              className="transform transition duration-300 hover:scale-105"
+              key={product._id}
+            >
+              <CartProduct product={product} />
+>>>>>>> b41cbea (update profile pages)
             </div>
           ))}
         </div>
