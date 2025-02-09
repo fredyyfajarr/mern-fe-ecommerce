@@ -80,7 +80,7 @@ const EditProfileView = () => {
               <div className="flex justify-end gap-4">
                 <button
                   type="button"
-                  onClick={() => navigate('/profile')}
+                  onClick={() => navigate(`/profile/${user.name}`)}
                   className="btn btn-ghost"
                 >
                   Cancel
