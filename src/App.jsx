@@ -13,6 +13,9 @@ import DetailProduct from './page/DetailProduct';
 import CheckoutView from './page/CheckoutView';
 import CreateProductView from './page/CreateProductView';
 import EditProductView from './page/EditProductView';
+import ProfileView from './page/ProfileView';
+import EditProfileView from './page/EditProfileView';
+import EditPasswordProfile from './page/EditPasswordProfile';
 
 // Loader
 import { loader as HomeLoader } from './page/HomeView';
@@ -21,6 +24,9 @@ import { loader as CheckoutLoader } from './page/CheckoutView';
 import { loader as OrderLoader } from './page/OrderView';
 import { loader as CreateProductLoader } from './page/CreateProductView';
 import { loader as EditProductLoader } from './page/EditProductView';
+import { loader as ProfileLoader } from './page/ProfileView';
+import { loader as EditProfileLoader } from './page/EditProfileView';
+import { loader as EditPasswordProfileLoader } from './page/EditPasswordProfile';
 
 // Action
 import { action as LoginAction } from './page/auth/LoginView';
@@ -79,6 +85,21 @@ const router = createBrowserRouter([
       {
         path: 'abouts',
         element: <AboutView />,
+      },
+      {
+        path: 'profile/:id',
+        element: <ProfileView />,
+        loader: ProfileLoader(store),
+      },
+      {
+        path: 'profile/:id/edit',
+        element: <EditProfileView />,
+        loader: EditProfileLoader(store),
+      },
+      {
+        path: 'profile/:id/change-password',
+        element: <EditPasswordProfile />,
+        loader: EditPasswordProfileLoader(store),
       },
     ],
   },

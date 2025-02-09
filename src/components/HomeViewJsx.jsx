@@ -21,34 +21,11 @@ const Hero = () => {
           </div>
         </div>
         <div className="hidden lg:carousel rounded-box w-full">
-          {/* {products.map((item) => (
+          {products.map((item) => (
             <div className="carousel-item w-full" key={item._id}>
               <img src={item.image} className="w-full" alt="Product Carousel" />
             </div>
-          ))} */}
-          <div className="carousel-item w-full h-[400px]">
-            {' '}
-            {/* Tetapkan tinggi tetap */}
-            <img
-              src="/sepatu1.png"
-              className="w-full h-full object-contain" /* object-contain untuk menjaga aspek ratio */
-              alt="Sepatu 1"
-            />
-          </div>
-          <div className="carousel-item w-full h-[400px]">
-            <img
-              src="/sepatu4.png"
-              className="w-full h-full object-contain"
-              alt="Sepatu 2"
-            />
-          </div>
-          <div className="carousel-item w-full h-[400px]">
-            <img
-              src="/sepatu3.png"
-              className="w-full h-full object-contain"
-              alt="Sepatu 3"
-            />
-          </div>
+          ))}
         </div>
       </div>
     </>

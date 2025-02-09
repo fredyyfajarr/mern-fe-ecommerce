@@ -13,7 +13,7 @@ const Header = () => {
             <span className="text-2xl font-bold text-primary"></span>
             <div className="md:flex md:flex-row flex-col pl-0 md:pl-2">
               <span className="text-xl md:text-xl sm:text-base xs:text-sm font-bold text-neutral-content">
-                {user ? 'Welcome, ' : 'ISSAC SHOP'}
+                {user ? 'Welcome, ' : 'ISAAC SHOP'}
               </span>
               {user && (
                 <span className="py-0.5 text-xl md:text-xl sm:text-base xs:text-sm font-bold text-neutral-content md:ml-1">

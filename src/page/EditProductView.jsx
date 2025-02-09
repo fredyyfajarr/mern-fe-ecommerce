@@ -8,7 +8,7 @@ import FormTextArea from '../components/Form/FormTextArea';
 import { toast } from 'react-toastify';
 
 export const loader = (store) => async () => {
-  const user = store.getState().userState.user;
+  const user = await store.getState().userState.user;
   if (!user) {
     toast.warn('Please login! for access this page');
     return redirect('/login');

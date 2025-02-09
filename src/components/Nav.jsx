@@ -104,12 +104,15 @@ const Nav = () => {
                 </li>
                 <div className="divider my-0"></div>
                 <li>
-                  <NavLink to="/profile" className="hover:text-primary">
+                  <NavLink
+                    to={`/profile/${user.name}`}
+                    className="hover:text-primary"
+                  >
                     Profile
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/orders" className="hover:text-primary">
+                  <NavLink to="/order" className="hover:text-primary">
                     My Orders
                   </NavLink>
                 </li>

@@ -27,8 +27,13 @@ const userSlice = createSlice({
       // set local storage
       localStorage.setItem('user', JSON.stringify(user));
     },
+    setUser: (state, action) => {
+      state.user = action.payload;
+      localStorage.setItem('user', JSON.stringify(action.payload));
+    },
   },
 });
 
-export const { loginUser, logoutUser, registerUser } = userSlice.actions;
+export const { loginUser, logoutUser, registerUser, setUser } =
+  userSlice.actions;
 export default userSlice.reducer;
