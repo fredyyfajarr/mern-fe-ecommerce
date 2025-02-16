@@ -1,51 +1,66 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import AuthModal from './AuthModal';
 
 const Header = () => {
   const user = useSelector((state) => state.userState.user);
+  const [showModal, setShowModal] = useState(false);
+  const [isRegister, setIsRegister] = useState(false);
+
+  const handleOpenModal = (register = false) => {
+    setIsRegister(register);
+    setShowModal(true);
+  };
+
   return (
-    <header className="bg-neutral shadow-lg">
-      <div className="mx-auto max-w-6xl px-8 py-4">
-        <nav className="flex justify-between items-center">
-          {/* Logo dan Nama Website */}
-          <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-primary"></span>
-            <div className="md:flex md:flex-row flex-col pl-0 md:pl-2">
-              <span className="text-xl md:text-xl sm:text-base xs:text-sm font-bold text-neutral-content">
-                {user ? 'Welcome, ' : 'ISAAC SHOP'}
-              </span>
-              {user && (
-                <span className="py-0.5 text-xl md:text-xl sm:text-base xs:text-sm font-bold text-neutral-content md:ml-1">
-                  {user.name} !
-                </span>
+    <>
+      <header className="bg-neutral shadow-lg">
+        <div className="mx-auto max-w-6xl px-8 py-4">
+          <nav className="flex justify-between items-center">
+            <img 
+              className="w-36 h-14 object-contain" 
+              src="/logo-sepatu.png" 
+              alt="logo" 
+            />
+
+            {/* User Section */}
+            <div className="flex items-center">
+              {user ? (
+                <div className="flex flex-col items-center">
+                  <span className="text-xl md:text-xl sm:text-base xs:text-sm font-bold text-neutral-content">
+                    Welcome
+                  </span>
+                  <span className="text-lg md:text-lg sm:text-sm xs:text-xs font-bold text-neutral-content">
+                    {user.name} !
+                  </span>
+                </div>
+              ) : (
+                <div className="flex space-x-3">
+                  <button 
+                    onClick={() => handleOpenModal(false)}
+                    className="btn btn-primary btn-sm"
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    onClick={() => handleOpenModal(true)}
+                    className="btn btn-outline btn-sm text-neutral-content hover:text-primary"
+                  >
+                    Sign Up
+                  </button>
+                </div>
               )}
             </div>
-          </Link>
+          </nav>
+        </div>
+      </header>
 
-          {/* User Section */}
-          <div className="flex items-center">
-            {user ? (
-              <div className="flex items-center space-x-4">
-                <button className="btn btn-primary btn-sm">Dashboard</button>
-              </div>
-            ) : (
-              <div className="flex space-x-3">
-                <Link to="/login" className="btn btn-primary btn-sm">
-                  Sign In
-                </Link>
-                <Link
-                  to="/register"
-                  className="btn btn-outline btn-sm text-neutral-content hover:text-primary"
-                >
-                  Sign Up
-                </Link>
-              </div>
-            )}
-          </div>
-        </nav>
-      </div>
-    </header>
+      <AuthModal 
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        isRegister={isRegister}
+      />
+    </>
   );
 };
 

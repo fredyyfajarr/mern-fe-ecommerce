@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 
 // Component
 import AboutView from './page/AboutView';
@@ -6,8 +7,6 @@ import CartView from './page/CartView';
 import HomeView from './page/HomeView';
 import OrderView from './page/OrderView';
 import ProductView from './page/ProductView';
-import LoginView from './page/auth/LoginView';
-import RegisterView from './page/auth/RegisterView';
 import PublicLayouts from './Layouts/PublicLayouts';
 import DetailProduct from './page/DetailProduct';
 import CheckoutView from './page/CheckoutView';
@@ -15,7 +14,7 @@ import CreateProductView from './page/CreateProductView';
 import EditProductView from './page/EditProductView';
 import ProfileView from './page/ProfileView';
 import EditProfileView from './page/EditProfileView';
-import EditPasswordProfile from './page/EditPasswordProfile';
+import EditPasswordView from './page/EditPasswordView';
 
 // Loader
 import { loader as HomeLoader } from './page/HomeView';
@@ -26,11 +25,9 @@ import { loader as CreateProductLoader } from './page/CreateProductView';
 import { loader as EditProductLoader } from './page/EditProductView';
 import { loader as ProfileLoader } from './page/ProfileView';
 import { loader as EditProfileLoader } from './page/EditProfileView';
-import { loader as EditPasswordProfileLoader } from './page/EditPasswordProfile';
+import { loader as EditPasswordLoader } from './page/EditPasswordView';
 
 // Action
-import { action as LoginAction } from './page/auth/LoginView';
-import { action as RegisterAction } from './page/auth/RegisterView';
 
 // Storage
 import { store } from './store';
@@ -98,25 +95,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'profile/:id/change-password',
-        element: <EditPasswordProfile />,
-        loader: EditPasswordProfileLoader(store),
+        element: <EditPasswordView />,
+        loader: EditPasswordLoader(store),
       },
     ],
-  },
-  {
-    path: '/login',
-    element: <LoginView />,
-    action: LoginAction(store),
-  },
-  {
-    path: '/register',
-    element: <RegisterView />,
-    action: RegisterAction(store),
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
+  );
 }
 
 export default App;

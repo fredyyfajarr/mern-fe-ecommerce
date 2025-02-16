@@ -1,13 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { priceFormat } from '../utils';
-import { FaTrash, FaPencilAlt } from 'react-icons/fa';
+import { FaTrash, FaPencilAlt, FaShoppingCart } from 'react-icons/fa';
 import customAPI from '../api';
 import { toast } from 'react-toastify';
 import { useRevalidator } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const CartProduct = ({ product, user }) => {
   const { revalidate } = useRevalidator();
+  const { addToCart } = useCart();
+
+  const handleAddToCart = async () => {
+    try {
+      const response = await customAPI.post('/cart/add', {
+        productId: product._id,
+        quantity: 1
+      });
+      
+      if (response.data) {
+        // Add to local cart state
+        addToCart(product);
+        toast.success('Added to cart successfully!');
+      }
+    } catch (error) {
+      console.error('Cart error:', error);
+      toast.error('Failed to add to cart');
+    }
+  };
 
   const handleDelete = async () => {
     await customAPI.delete(`/product/${product._id}`);
@@ -48,12 +68,19 @@ const CartProduct = ({ product, user }) => {
           <img
             src={product.image}
             alt={product.name}
-            className="w-auto h-auto max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
+            className={`w-auto h-auto max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110 ${
+              product.stock < 1 ? 'opacity-50' : ''
+            }`}
           />
           {product.stock < 1 && (
-            <span className="absolute top-2 right-2 bg-error text-white font-bold text-lg px-4 py-1 rounded-full animate-pulse">
-              Sold Out!
-            </span>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute w-full h-full bg-black/20 backdrop-blur-sm"></div>
+              <div className="transform rounded-xl bg-red-700 text-white py-2 px-8 shadow-xl">
+                <span className="font-bold text-xl tracking-wider animate-pulse">
+                  SOLD OUT
+                </span>
+              </div>
+            </div>
           )}
         </figure>
         <div className="card-body">
@@ -77,7 +104,15 @@ const CartProduct = ({ product, user }) => {
           <p className="text-gray-600">
             {product.description.substring(0, 50)}...
           </p>
-          <div className="card-actions justify-end mt-4">
+          <div className="card-actions justify-end mt-4 flex items-center gap-2">
+            <button
+              onClick={handleAddToCart}
+              disabled={product.stock < 1}
+              className="btn btn-circle btn-primary hover:scale-105 transition-transform duration-200"
+              title="Add to Cart"
+            >
+              <FaShoppingCart className="text-xl" />
+            </button>
             <Link
               to={`/product/${product._id}`}
               className="btn btn-primary hover:scale-105 transition-transform duration-200 rounded-full"

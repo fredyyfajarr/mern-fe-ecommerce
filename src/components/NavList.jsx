@@ -36,7 +36,7 @@ const NavList = () => {
         }
         return (
           <li key={id}>
-            <NavLink className="capitalize" to={url}>
+            <NavLink className="font-bold capitalize" to={url}>
               {text}
             </NavLink>
           </li>

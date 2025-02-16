@@ -49,17 +49,17 @@ const Nav = () => {
             >
               <div className="w-6 h-6 flex items-center justify-center relative">
                 <span
-                  className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
+                  className={`font-bold absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
                     isOpen ? 'rotate-45' : '-translate-y-2'
                   }`}
                 ></span>
                 <span
-                  className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
+                  className={`font-bold absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
                     isOpen ? 'opacity-0' : 'opacity-100'
                   }`}
                 ></span>
                 <span
-                  className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
+                  className={`font-bold absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
                     isOpen ? '-rotate-45' : 'translate-y-2'
                   }`}
                 ></span>
@@ -67,7 +67,7 @@ const Nav = () => {
             </label>
             <ul
               tabIndex={0}
-              className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-200 rounded-box w-52 ${
+              className={`font-bold menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-200 rounded-box w-52 ${
                 isOpen ? 'block' : 'hidden'
               }`}
             >
@@ -106,13 +106,13 @@ const Nav = () => {
                 <li>
                   <NavLink
                     to={`/profile/${user.name}`}
-                    className="hover:text-primary"
+                    className="font-bold hover:text-primary"
                   >
                     Profile
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/order" className="hover:text-primary">
+                  <NavLink to="/order" className="font-bold hover:text-primary">
                     My Orders
                   </NavLink>
                 </li>
@@ -120,9 +120,9 @@ const Nav = () => {
                 <li>
                   <button
                     onClick={handlingLogout}
-                    className="text-red-500 hover:text-red-700 hover:bg-red-100"
+                    className="font-bold text-red-500 hover:text-red-700 hover:bg-red-100"
                   >
-                    Logout
+                    Logout 
                   </button>
                 </li>
               </ul>

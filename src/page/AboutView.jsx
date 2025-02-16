@@ -40,11 +40,46 @@ const AboutView = () => {
         </div>
 
         <div className="mt-8 bg-base-100 rounded-lg shadow-lg p-6">
-          <h2 className="text-2xl font-semibold mb-4 text-primary">Tim Kami</h2>
-          <p className="text-lg leading-relaxed">
-            Kami memiliki tim yang terdiri dari profesional berpengalaman yang
+          <h2 className="text-4xl text-center font-semibold mb-4 text-primary">Tim Kami</h2>
+          <p className="text-lg text-center leading-relaxed mb-6">
+            Kami memiliki tim yang terdiri dari profesional berpengalaman yang <br />
             berdedikasi untuk memberikan layanan terbaik kepada pelanggan kami.
+            <span className="hidden sm:block md:hidden lg:block">Kami percaya bahwa dengan bekerja sama, kami dapat memberikan
+            pengalaman <br /> belanja yang lebih baik dan meningkatkan kepuasan
+            pelanggan.</span>
           </p>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="flex flex-col items-center">
+              <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
+                <img
+                  src="/public/revan-profile.jpg"
+                  alt="Revan"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-primary">Eka Revandi</h3>
+              <p className="text-lg font-semibold text-gray-600">Frontend Developer</p>
+              <p className="text-center mt-2">
+                Spesialis dalam <span className="font-bold text-primary">UI/UX</span> serta pengembangan <span className='font-bold text-primary'>interface</span>  pengguna yang menarik, interaktif dan responsif.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
+                <img
+                  src="/public/isak-profile.jpg"
+                  alt="Predi"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-primary">Freedy Fajar</h3>
+              <p className="text-lg font-semibold text-gray-600">Backend Developer</p>
+              <p className="text-center mt-2">
+                Ahli dalam pengembangan sistem <span className='font-bold text-primary'>Backend</span> dan manajemen <span className="font-bold text-primary">Database</span>.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="mt-8 bg-primary/10 rounded-lg shadow-lg p-6">
@@ -71,7 +106,7 @@ const AboutView = () => {
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              <span>support@issacshop.com</span>
+              <span>support@frevanshop.com</span>
             </div>
             <div className="flex items-center space-x-2 hover:text-primary transition-colors duration-300">
               <svg

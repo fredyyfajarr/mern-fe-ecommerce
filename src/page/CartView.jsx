@@ -18,7 +18,7 @@ const CartView = () => {
   return (
     <>
       <div className="border-b border-primary pb-5 mt-5">
-        <h2 className="text-2xl font-bold capitalize">Cart List</h2>
+        <h2 className="text-4xl text-center font-bold capitalize">Cart List</h2>
       </div>
       <div className="mt-8 grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-8">

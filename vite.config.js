@@ -6,8 +6,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
-        // target: 'https://be-ecommerce-isaac.vercel.app/',
+        // target: 'http://localhost:3000',
+        target: 'https://be-ecommerce-isaac.vercel.app/',
         changeOrigin: true,
       },
     },
