@@ -53,7 +53,7 @@ const AboutView = () => {
             <div className="flex flex-col items-center">
               <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
                 <img
-                  src="/img/team/revan-profile.jpg"
+                  src="/revan-profile.jpg"
                   alt="Revan"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                 />
@@ -68,7 +68,7 @@ const AboutView = () => {
             <div className="flex flex-col items-center">
               <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
                 <img
-                  src="/img/team/isak-profile.jpg"
+                  src="/isak-profile.jpg"
                   alt="Predi"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                 />
