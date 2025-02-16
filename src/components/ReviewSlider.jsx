@@ -5,21 +5,21 @@ const reviews = [
     id: 1,
     name: "Ahmad Memet",
     rating: 5,
-    image: "/public/memet.jpg",
+    image: "/img/memet.jpg",
     review: "Emang keren banget ni toko, sepatu nya ori semua di tambah admin ramah 🙂",
   },
   {
     id: 2,
     name: "Nesaaaa",
     rating: 5,
-    image: "/public/nesa.jpg",
+    image: "/img/nesa.jpg",
     review: "Sepatunya bagus bagus, admin revan nya ganteng banget !!!",
   },
   {
     id: 3,
     name: "Pais Bentang",
     rating: 5,
-    image: "/public/pais.jpg",
+    image: "/img/pais.jpg",
     review: "Gila ga nyangka banget nemu toko se keren ini, sukses terus 😎",
   }
 ];
