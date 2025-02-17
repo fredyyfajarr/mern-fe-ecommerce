@@ -5,21 +5,26 @@ import { useSelector } from 'react-redux';
 const links = [
   {
     id: 1,
+    url: '/',
+    text: 'home',
+  },
+  {
+    id: 2,
     url: 'abouts',
     text: 'abouts',
   },
   {
-    id: 2,
+    id: 3,
     url: 'products',
     text: 'products',
   },
   {
-    id: 3,
+    id: 4,
     url: 'order',
     text: 'orders',
   },
   {
-    id: 4,
+    id: 5,
     url: 'checkout',
     text: 'checkout',
   },
@@ -36,7 +41,7 @@ const NavList = () => {
         }
         return (
           <li key={id}>
-            <NavLink className="font-bold capitalize" to={url}>
+            <NavLink className="font-bold lg:px-5 capitalize" to={url}>
               {text}
             </NavLink>
           </li>

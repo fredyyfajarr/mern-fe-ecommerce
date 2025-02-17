@@ -28,12 +28,12 @@ const OrderView = () => {
   const { orders } = useLoaderData();
   if (!orders.length) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="text-center p-8 bg-base-200 rounded-lg shadow-lg">
-          <h1 className="text-3xl font-bold text-primary">
+      <div className="min-h-[80vh] flex items-center justify-center">
+        <div className="text-center p-12 bg-base-200 rounded-xl shadow-xl w-full max-w-2xl mx-4">
+          <h1 className="text-4xl font-bold text-primary mb-4">
             Pesanan Anda Masih Kosong
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-4 text-gray-600 text-lg">
             Silakan mulai berbelanja untuk membuat pesanan
           </p>
         </div>
