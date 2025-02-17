@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaHeart } from 'react-icons/fa';
+import { SiMongodb, SiExpress, SiReact, SiNodedotjs } from 'react-icons/si';
 
 const Footer = () => {
   const [isHovering, setIsHovering] = useState(false);
@@ -64,6 +65,18 @@ const Footer = () => {
               </a>
             ))}
           </div>
+        </div>
+
+        {/* Tech Stack */}
+        <div className="flex flex-col mt-5 items-center">
+          <div className="flex justify-center items-center gap-6">
+            <SiMongodb className="text-2xl hover:text-green-500 transition-colors duration-300" title="MongoDB" />
+            <SiExpress className="text-2xl hover:text-gray-600 transition-colors duration-300" title="Express.js" />
+            <SiReact className="text-2xl hover:text-blue-400 transition-colors duration-300" title="React.js" />
+            <SiNodedotjs className="text-2xl hover:text-green-600 transition-colors duration-300" title="Node.js" />
+          </div>
+          <p className="text-xs mt-2 opacity-60">Built with MERN Stack</p>
+          <div className="w-full mt-4 border-t border-base-content/10"></div>
         </div>
 
         {/* Copyright */}

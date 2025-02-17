@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { SiMongodb, SiExpress, SiReact, SiNodedotjs } from 'react-icons/si';
 
 const AboutView = () => {
   useEffect(() => {
@@ -118,6 +119,54 @@ const AboutView = () => {
               </p>
             </div>
           </div>
+        </div>
+
+        <div 
+          className="mt-8 bg-base-100 rounded-lg shadow-lg p-6"
+          data-aos="fade-up"
+          data-aos-delay="1100"
+        >
+          <h2 className="text-4xl text-center font-semibold mb-8 text-primary">
+            Tech Stack
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div 
+              className="flex flex-col items-center"
+              data-aos="zoom-in"
+              data-aos-delay="1200"
+            >
+              <SiMongodb className="w-20 h-20 hover:scale-110 hover:text-green-500 transition-all duration-300" />
+              <p className="mt-2 font-semibold text-primary">MongoDB</p>
+            </div>
+            <div 
+              className="flex flex-col items-center"
+              data-aos="zoom-in"
+              data-aos-delay="1300"
+            >
+              <SiExpress className="w-20 h-20 hover:scale-110 hover:text-gray-600 transition-all duration-300" />
+              <p className="mt-2 font-semibold text-primary">Express.js</p>
+            </div>
+            <div 
+              className="flex flex-col items-center"
+              data-aos="zoom-in"
+              data-aos-delay="1400"
+            >
+              <SiReact className="w-20 h-20 hover:scale-110 hover:text-blue-400 transition-all duration-300" />
+              <p className="mt-2 font-semibold text-primary">React</p>
+            </div>
+            <div 
+              className="flex flex-col items-center"
+              data-aos="zoom-in"
+              data-aos-delay="1500"
+            >
+              <SiNodedotjs className="w-20 h-20 hover:scale-110 hover:text-green-600 transition-all duration-300" />
+              <p className="mt-2 font-semibold text-primary">Node.js</p>
+            </div>
+          </div>
+          <p className="text-center mt-8 text-lg">
+            Website ini dibangun menggunakan stack teknologi MERN (MongoDB, Express.js, React, dan Node.js) 
+            untuk memberikan pengalaman pengguna yang optimal dan performa yang handal.
+          </p>
         </div>
 
         <div 
