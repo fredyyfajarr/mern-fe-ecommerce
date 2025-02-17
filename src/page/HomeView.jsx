@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import CartProduct from '../components/CartProduct';
 import customAPI from '../api';
 import { useLoaderData } from 'react-router-dom';
@@ -13,12 +16,20 @@ export const loader = async ({ request }) => {
 
 const HomeView = () => {
   const { products } = useLoaderData();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Hero />
 
       {/* Featured Products Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-aos="fade-up">
         <div className="border-b border-primary pb-5">
           <h2 className="text-3xl font-bold capitalize text-primary">
             Featured Products
@@ -34,6 +45,7 @@ const HomeView = () => {
             <div
               className="transform transition duration-300 hover:scale-105"
               key={product._id}
+              data-aos="fade-up"
             >
               <CartProduct product={product} />
             </div>
@@ -42,7 +54,7 @@ const HomeView = () => {
       </div>
 
       {/* Gallery Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-gray-50" data-aos="fade-up">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold capitalize text-primary">
             Koleksi Kami
@@ -54,7 +66,7 @@ const HomeView = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Sports Collection */}
-          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group">
+          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group" data-aos="zoom-in">
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/50 transition-opacity group-hover:opacity-90"></div>
             <img
               src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=2070&auto=format&fit=crop"
@@ -70,7 +82,7 @@ const HomeView = () => {
           </div>
 
           {/* Running Series */}
-          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group">
+          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group" data-aos="zoom-in">
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/50 transition-opacity group-hover:opacity-90"></div>
             <img
               src="https://images.unsplash.com/photo-1556278777-a2a98c0d56da?w=600&auto=format&fit=crop"
@@ -86,7 +98,7 @@ const HomeView = () => {
           </div>
 
           {/* Lifestyle Collection */}
-          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group">
+          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group" data-aos="zoom-in">
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/50 transition-opacity group-hover:opacity-90"></div>
             <img
               src="https://images.unsplash.com/photo-1562183241-840b8af0721e?w=600&auto=format&fit=crop"
@@ -102,7 +114,7 @@ const HomeView = () => {
           </div>
 
           {/* Limited Edition */}
-          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group">
+          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group" data-aos="zoom-in">
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/50 transition-opacity group-hover:opacity-90"></div>
             <img
               src="https://images.unsplash.com/photo-1523212465813-857a9d1a19f4?w=600&auto=format&fit=crop"
@@ -120,7 +132,9 @@ const HomeView = () => {
       </div>
 
       {/* Review Slider Section */}
-      <ReviewSlider />
+      <div data-aos="fade-up">
+        <ReviewSlider />
+      </div>
     </div>
   );
 };

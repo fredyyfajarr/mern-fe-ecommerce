@@ -1,15 +1,31 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const AboutView = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-in-out',
+    });
+  }, []);
+
   return (
-    <div className="about-container min-h-screen bg-gradient-to-b from-base-200 to-base-300 p-8 animate-fadeIn">
+    <div className="about-container min-h-screen bg-gradient-to-b from-base-200 to-base-300 p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl font-bold mb-8 text-center hover:text-primary transition-colors duration-300">
+        <h1 
+          className="text-5xl font-bold mb-8 text-center hover:text-primary transition-colors duration-300"
+          data-aos="fade-down"
+        >
           Tentang Kami
         </h1>
 
-        <div className="bg-base-100 rounded-lg shadow-xl p-6 mb-8 hover:shadow-2xl transition-shadow duration-300">
+        <div 
+          className="bg-base-100 rounded-lg shadow-xl p-6 mb-8 hover:shadow-2xl transition-shadow duration-300"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           <p className="text-lg mb-4 leading-relaxed">
             Selamat datang di toko online kami! Kami berdedikasi untuk
             memberikan produk terbaik dan layanan pelanggan yang luar biasa.
@@ -17,7 +33,11 @@ const AboutView = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-base-100 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform duration-300">
+          <div 
+            className="bg-base-100 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform duration-300"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
             <h2 className="text-2xl font-semibold mb-4 text-primary">
               Misi Kami
             </h2>
@@ -28,7 +48,11 @@ const AboutView = () => {
             </p>
           </div>
 
-          <div className="bg-base-100 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform duration-300">
+          <div 
+            className="bg-base-100 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform duration-300"
+            data-aos="fade-left"
+            data-aos-delay="400"
+          >
             <h2 className="text-2xl font-semibold mb-4 text-primary">
               Visi Kami
             </h2>
@@ -39,18 +63,28 @@ const AboutView = () => {
           </div>
         </div>
 
-        <div className="mt-8 bg-base-100 rounded-lg shadow-lg p-6">
+        <div 
+          className="mt-8 bg-base-100 rounded-lg shadow-lg p-6"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           <h2 className="text-4xl text-center font-semibold mb-4 text-primary">Tim Kami</h2>
           <p className="text-lg text-center leading-relaxed mb-6">
             Kami memiliki tim yang terdiri dari profesional berpengalaman yang <br />
             berdedikasi untuk memberikan layanan terbaik kepada pelanggan kami.
-            <span className="hidden sm:block md:hidden lg:block">Kami percaya bahwa dengan bekerja sama, kami dapat memberikan
-            pengalaman <br /> belanja yang lebih baik dan meningkatkan kepuasan
-            pelanggan.</span>
+            <span className="hidden sm:block md:hidden lg:block">
+              Kami percaya bahwa dengan bekerja sama, kami dapat memberikan
+              pengalaman <br /> belanja yang lebih baik dan meningkatkan kepuasan
+              pelanggan.
+            </span>
           </p>
           
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="flex flex-col items-center">
+            <div 
+              className="flex flex-col items-center"
+              data-aos="zoom-in"
+              data-aos-delay="800"
+            >
               <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
                 <img
                   src="/revan-profile.jpg"
@@ -65,7 +99,11 @@ const AboutView = () => {
               </p>
             </div>
 
-            <div className="flex flex-col items-center">
+            <div 
+              className="flex flex-col items-center"
+              data-aos="zoom-in"
+              data-aos-delay="1000"
+            >
               <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
                 <img
                   src="/isak-profile.jpg"
@@ -82,7 +120,11 @@ const AboutView = () => {
           </div>
         </div>
 
-        <div className="mt-8 bg-primary/10 rounded-lg shadow-lg p-6">
+        <div 
+          className="mt-8 bg-primary/10 rounded-lg shadow-lg p-6"
+          data-aos="fade-up"
+          data-aos-delay="1200"
+        >
           <h2 className="text-2xl font-semibold mb-4 text-primary">
             Kontak Kami
           </h2>
