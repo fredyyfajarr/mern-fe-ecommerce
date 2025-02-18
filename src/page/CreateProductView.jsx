@@ -19,7 +19,7 @@ export const loader = (store) => async () => {
 };
 
 const CreateProductView = () => {
-  const categories = ['sepatu', 'baju', 'kemeja', 'celana'];
+  const categories = ['sepatu', 'baju', 'kemeja', 'celana', 'hoodie'];
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
