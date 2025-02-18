@@ -22,7 +22,7 @@ export const loader = (store) => async () => {
 
 const EditProductView = () => {
   const [product, setProduct] = useState(null);
-  const categories = ['sepatu', 'baju', 'kemeja', 'celana'];
+  const categories = ['sepatu', 'baju', 'kemeja', 'celana', 'hoodie'];
   const navigate = useNavigate();
   const { id } = useParams();
   const getProductId = async () => {
