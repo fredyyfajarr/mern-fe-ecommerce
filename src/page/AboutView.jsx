@@ -13,10 +13,10 @@ const AboutView = () => {
   }, []);
 
   return (
-    <div className="about-container min-h-screen bg-gradient-to-b from-base-200 to-base-300 p-8">
+    <div className="about-container min-h-screen bg-gradient-to-b from-base-200 to-base-300 p-8 rounded-xl">
       <div className="max-w-4xl mx-auto">
         <h1 
-          className="text-5xl font-bold mb-8 text-center hover:text-primary transition-colors duration-300"
+          className="text-3xl md:text-4xl lg:text-xl font-bold mb-8 text-center hover:text-primary transition-colors duration-300"
           data-aos="fade-down"
         >
           Tentang Kami
@@ -79,46 +79,50 @@ const AboutView = () => {
               pelanggan.
             </span>
           </p>
-          
-          <div className="grid md:grid-cols-2 gap-8">
+
+            </div>
+          </div>
+          <div className="grid mt-5 md:grid-cols-2 gap-6">
             <div 
-              className="flex flex-col items-center"
-              data-aos="zoom-in"
+              className="bg-base-100 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform duration-300"
+              data-aos="fade-right"
               data-aos-delay="800"
             >
-              <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
-                <img
-                  src="/revan-profile.jpg"
-                  alt="Revan"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
+              <div className="flex flex-col items-center">
+                <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
+                  <img
+                    src="/revan-profile.jpg"
+                    alt="Revan"
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-primary">Eka Revandi</h3>
+                <p className="text-lg font-semibold text-gray-600">Frontend Developer</p>
+                <p className="text-center mt-2">
+                  Spesialis dalam <span className="font-bold text-primary">UI/UX</span> serta pengembangan <span className='font-bold text-primary'>interface</span> pengguna yang menarik, interaktif dan responsif.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-primary">Eka Revandi</h3>
-              <p className="text-lg font-semibold text-gray-600">Frontend Developer</p>
-              <p className="text-center mt-2">
-                Spesialis dalam <span className="font-bold text-primary">UI/UX</span> serta pengembangan <span className='font-bold text-primary'>interface</span>  pengguna yang menarik, interaktif dan responsif.
-              </p>
             </div>
 
             <div 
-              className="flex flex-col items-center"
-              data-aos="zoom-in"
+              className="bg-base-100 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform duration-300"
+              data-aos="fade-left"
               data-aos-delay="1000"
             >
-              <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
-                <img
-                  src="/isak-profile.jpg"
-                  alt="Predi"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
+              <div className="flex flex-col items-center">
+                <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
+                  <img
+                    src="/isak-profile.jpg"
+                    alt="Predi"
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-primary">Freedy Fajar</h3>
+                <p className="text-lg font-semibold text-gray-600">Backend Developer</p>
+                <p className="text-center mt-2">
+                  Ahli dalam pengembangan sistem <span className='font-bold text-primary'>Backend</span> dan manajemen <span className="font-bold text-primary">Database</span>.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-primary">Freedy Fajar</h3>
-              <p className="text-lg font-semibold text-gray-600">Backend Developer</p>
-              <p className="text-center mt-2">
-                Ahli dalam pengembangan sistem <span className='font-bold text-primary'>Backend</span> dan manajemen <span className="font-bold text-primary">Database</span>.
-              </p>
-            </div>
-          </div>
         </div>
 
         <div 
@@ -170,7 +174,7 @@ const AboutView = () => {
         </div>
 
         <div 
-          className="mt-8 bg-primary/10 rounded-lg shadow-lg p-6"
+          className="mt-5 bg-primary/10 rounded-lg shadow-lg p-6"
           data-aos="fade-up"
           data-aos-delay="1200"
         >
