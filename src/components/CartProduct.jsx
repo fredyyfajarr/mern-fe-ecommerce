@@ -5,28 +5,25 @@ import { FaTrash, FaPencilAlt, FaShoppingCart } from 'react-icons/fa';
 import customAPI from '../api';
 import { toast } from 'react-toastify';
 import { useRevalidator } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/cartSlice';
 
 const CartProduct = ({ product, user }) => {
   const { revalidate } = useRevalidator();
-  const { addToCart } = useCart();
+  const dispatch = useDispatch();
 
-  const handleAddToCart = async () => {
-    try {
-      const response = await customAPI.post('/cart/add', {
-        productId: product._id,
-        quantity: 1
-      });
-      
-      if (response.data) {
-        // Add to local cart state
-        addToCart(product);
-        toast.success('Added to cart successfully!');
-      }
-    } catch (error) {
-      console.error('Cart error:', error);
-      toast.error('Failed to add to cart');
-    }
+  const handleAddToCart = () => {
+    const productCart = {
+      cartId: product._id + product.name,
+      productId: product._id,
+      image: product.image,
+      name: product.name,
+      price: product.price,
+      stock: product.stock,
+      amount: 1, // Set default amount to 1
+    };
+
+    dispatch(addItem({ product: productCart }));
   };
 
   const handleDelete = async () => {
