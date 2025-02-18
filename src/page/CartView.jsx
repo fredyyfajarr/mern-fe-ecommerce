@@ -47,11 +47,11 @@ const CartView = () => {
         <motion.h2 
           initial={{ y: -20 }}
           animate={{ y: 0 }}
-          className="text-4xl md:text-5xl text-center font-bold capitalize bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+          className="pb-5 md:pb-3 lg:pb-4 sm:pb-0 text-4xl md:text-5xl text-center font-bold capitalize bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
         >
           Shopping Cart
         </motion.h2>
-        <p className="text-lg text-center text-gray-600 mt-3">
+        <p className="text-lg text-center text-gray-600 mt-3 sm:mt-0 ">
           {numItemInCart} {numItemInCart === 1 ? 'item' : 'items'} in your cart
         </p>
       </div>

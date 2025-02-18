@@ -17,6 +17,7 @@ const Nav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = React.useState(false);
 
   const handlingLogout = async () => {
     try {
@@ -41,10 +42,9 @@ const Nav = () => {
             <GiRunningShoe className="hover:rotate-12 transition-all" />
           </NavLink>
           {/* Mobile Device */}
-          <div className="dropdown">
-            <label
-              tabIndex={0}
-              className="btn btn-ghost lg:hidden hover:bg-primary hover:text-white transition-all"
+          <div className="lg:hidden">
+            <button
+              className="btn btn-ghost hover:bg-primary hover:text-white transition-all"
               onClick={() => setIsOpen(!isOpen)}
             >
               <div className="w-6 h-6 flex items-center justify-center relative">
@@ -64,15 +64,30 @@ const Nav = () => {
                   }`}
                 ></span>
               </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className={`font-bold menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-200 rounded-box w-52 ${
-                isOpen ? 'block' : 'hidden'
+            </button>
+            {/* Overlay */}
+            <div
+              className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${
+                isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+              }`}
+              onClick={() => setIsOpen(false)}
+            ></div>
+            {/* Sliding Menu */}
+            <div
+              className={`fixed top-0 left-0 h-full w-64 bg-base-200 shadow-xl transform transition-transform duration-300 ease-in-out ${
+                isOpen ? 'translate-x-0' : '-translate-x-full'
               }`}
             >
-              <NavList />
-            </ul>
+              <div className="p-4">
+                <NavLink to="/" className="flex items-center gap-2 mb-6">
+                  <GiRunningShoe className="text-3xl text-primary" />
+                  <span className="text-xl font-bold">FrevanShop</span>
+                </NavLink>
+                <ul className="menu font-bold p-0">
+                  <NavList />
+                </ul>
+              </div>
+            </div>
           </div>
           {/* PC Device */}
           <div className="hidden lg:flex">
@@ -94,39 +109,91 @@ const Nav = () => {
             </div>
           </NavLink>
           {user && (
-            <details className="dropdown dropdown-end">
-              <summary className="btn btn-ghost btn-circle btn-md hover:bg-primary hover:text-white transition-all">
+            <>
+              <button
+                className="btn btn-ghost btn-circle btn-md hover:bg-primary hover:text-white transition-all"
+                onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+              >
                 <BsPerson className="text-xl" />
-              </summary>
-              <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow-lg mt-2">
-                <li className="font-semibold text-center py-2 text-primary">
-                  Hi, {user.name || 'User'}
-                </li>
-                <div className="divider my-0"></div>
-                <li>
-                  <NavLink
-                    to={`/profile/${user.name}`}
-                    className="font-bold hover:text-primary"
-                  >
-                    Profile
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/order" className="font-bold hover:text-primary">
-                    My Orders
-                  </NavLink>
-                </li>
-                <div className="divider my-0"></div>
-                <li>
-                  <button
-                    onClick={handlingLogout}
-                    className="font-bold text-red-500 hover:text-red-700 hover:bg-red-100"
-                  >
-                    Logout 
-                  </button>
-                </li>
-              </ul>
-            </details>
+              </button>
+
+              {/* User Menu Overlay */}
+              <div
+                className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 z-40 ${
+                  isUserMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                }`}
+                onClick={() => setIsUserMenuOpen(false)}
+              ></div>
+
+              {/* User Menu Slide Panel */}
+              <div
+                className={`fixed top-0 right-0 h-full w-64 bg-base-200 shadow-xl transform transition-transform duration-300 ease-in-out z-50 ${
+                  isUserMenuOpen ? 'translate-x-0' : 'translate-x-full'
+                }`}
+              >
+                <div className="p-4 h-full flex flex-col">
+                  {/* Logo and Close Button Section */}
+                  <div className="text-center pt-4 pb-8">
+                    <div className="flex justify-end">
+                      <button
+                        onClick={() => setIsUserMenuOpen(false)}
+                        className="btn btn-ghost btn-sm btn-circle"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                    <img src="/logo-sepatu-biru.png" alt="" className="h-12 w-36 drop-shadow-lg mx-auto animate-bounce"/>
+                    <h2 className="text-xl font-bold mt-2">FrevanShop</h2>
+                    <div className="mt-4 p-3 bg-primary/10 rounded-lg drop-shadow-2xl">
+                      <span className="font-semibold text-primary block">
+                        Welcome back,
+                      </span>
+                      <span className="captitalize text-lg font-bold">
+                        {user.name || 'User'} 😊
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Menu Items */}
+                  <ul className="menu p-0 gap-2">
+                    <li>
+                      <NavLink
+                        to={`/profile/${user.name}`}
+                        className="flex items-center gap-2 font-bold hover:text-primary bg-base-100"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        <BsPerson className="text-lg" />
+                        Profile
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/order"
+                        className="flex items-center gap-2 font-bold hover:text-primary bg-base-100"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        <BsCart3 className="text-lg" />
+                        My Orders
+                      </NavLink>
+                    </li>
+                  </ul>
+
+                  {/* Logout Button at Bottom */}
+                  <div className="mt-8 pb-4">
+                    <div className="divider my-2"></div>
+                    <button
+                      onClick={() => {
+                        handlingLogout();
+                        setIsUserMenuOpen(false);
+                      }}
+                      className="btn btn-error btn-outline w-full font-bold hover:text-white"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>

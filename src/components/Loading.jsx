@@ -2,8 +2,16 @@ import React from 'react';
 
 const Loading = () => {
   return (
-    <div className="h-screen flex items-center justify-center">
-      <span className="loading loading-infinity loading-lg"></span>;
+    <div className="h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-50 to-indigo-50">
+      <div className="animate-bounce">
+        <span className="loading loading-infinity loading-lg text-indigo-600"></span>
+      </div>
+      <h2 className="mt-4 text-xl font-semibold text-gray-700 animate-pulse">
+        Loading...
+      </h2>
+      <p className="mt-2 text-sm text-gray-500">
+        Mohon di tunggu ya...
+      </p>
     </div>
   );
 };

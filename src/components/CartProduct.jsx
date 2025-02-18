@@ -112,7 +112,7 @@ const CartProduct = ({ product, user }) => {
             </button>
             <Link
               to={`/product/${product._id}`}
-              className="btn btn-primary hover:scale-105 transition-transform duration-200 rounded-full"
+              className="btn btn-primary hover:scale-105 ml-32 transition-transform duration-200 rounded-full"
             >
               Buy Now
             </Link>

@@ -40,8 +40,20 @@ const NavList = () => {
           return null;
         }
         return (
-          <li key={id}>
-            <NavLink className="font-bold lg:px-5 capitalize" to={url}>
+          <li key={id} className="my-2 lg:my-0">
+            <NavLink 
+              className={({ isActive }) => `
+                font-bold lg:px-5 capitalize
+                lg:hover:text-primary
+                block w-full py-2 px-4
+                transition-all duration-200
+                hover:bg-primary/10 hover:text-primary
+                hover:outline hover:outline-2 hover:outline-primary
+                rounded-lg
+                ${isActive ? 'text-primary' : ''}
+              `}
+              to={url}
+            >
               {text}
             </NavLink>
           </li>

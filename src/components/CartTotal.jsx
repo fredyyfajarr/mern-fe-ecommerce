@@ -45,7 +45,7 @@ const CartTotal = () => {
         </motion.div>
 
         {/* Tax Note */}
-        <p className="text-[10px] md:text-xs text-gray-500 text-center mt-2 md:mt-4">
+        <p className="text-[10px] md:text-xs text-gray-500 mt-2 md:mt-4">
           * Tax will be calculated at checkout
         </p>
       </div>

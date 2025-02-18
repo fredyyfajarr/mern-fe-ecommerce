@@ -16,7 +16,7 @@ const AboutView = () => {
     <div className="about-container min-h-screen bg-gradient-to-b from-base-200 to-base-300 p-8 rounded-xl">
       <div className="max-w-4xl mx-auto">
         <h1 
-          className="text-3xl md:text-4xl lg:text-xl font-bold mb-8 text-center hover:text-primary transition-colors duration-300"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-center hover:text-primary transition-colors duration-500"
           data-aos="fade-down"
         >
           Tentang Kami
