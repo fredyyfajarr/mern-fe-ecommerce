@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 import AuthModal from './AuthModal';
 
 const Header = () => {
@@ -17,11 +18,13 @@ const Header = () => {
       <header className="bg-gradient-to-r from-primary to-secondary shadow-lg">
         <div className="mx-auto max-w-6xl px-8 py-4">
           <nav className="flex justify-between items-center">
-            <img 
-              className="w-23 h-10 sm:w-24 sm:h-12 md:w-32 md:h-12 lg:w-36 lg:h-14 object-contain" 
-              src="/logo-sepatu.png" 
-              alt="logo" 
-            />
+            <Link to="/">
+              <img 
+                className="w-23 h-10 sm:w-24 sm:h-12 md:w-32 md:h-12 lg:w-36 lg:h-14 object-contain" 
+                src="/logo-sepatu.png" 
+                alt="logo" 
+              />
+            </Link>
 
             {/* User Section */}
             <div className="flex items-center">

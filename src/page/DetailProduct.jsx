@@ -12,7 +12,7 @@ const DetailProduct = () => {
   const [product, setProduct] = useState('');
   const [amount, setAmount] = useState(1);
 
-  // store
+
   const dispatch = useDispatch();
 
   const handleAmount = (e) => {
@@ -43,10 +43,10 @@ const DetailProduct = () => {
   }, []);
 
   return (
-    <section className="container mx-auto px-4 py-8">
+    <section className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="card lg:card-side bg-base-300 shadow-xl rounded-xl overflow-hidden">
         <figure className="lg:w-1/2">
-          <div className="relative w-full h-[300px] lg:h-[600px]">
+          <div className="relative w-full h-[300px] lg:h-[400px]">
             <img
               src={product.image}
               alt={product.name}
@@ -54,7 +54,7 @@ const DetailProduct = () => {
             />
             {product.stock < 1 && (
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                <span className="bg-error px-6 py-3 rounded-lg font-bold text-2xl lg:text-4xl text-white transform -rotate-12 shadow-lg">
+                <span className="bg-error px-6 py-3 rounded-lg font-bold text-xl lg:text-2xl text-white transform -rotate-12 shadow-lg">
                   Sold Out!!
                 </span>
               </div>
@@ -62,17 +62,17 @@ const DetailProduct = () => {
           </div>
         </figure>
 
-        <div className="card-body lg:w-1/2 p-6 lg:p-8">
+        <div className="card-body lg:w-1/2 p-6">
           <div className="space-y-4">
-            <h2 className="card-title text-2xl lg:text-3xl font-bold">
+            <h2 className="card-title text-xl lg:text-2xl font-bold">
               {product.name}
             </h2>
 
             <div className="flex flex-wrap items-center gap-3">
-              <span className="text-2xl lg:text-4xl text-accent font-bold">
+              <span className="text-xl lg:text-2xl text-accent font-bold">
                 {priceFormat(product.price)}
               </span>
-              <div className="badge badge-primary badge-lg">
+              <div className="badge badge-primary badge-md">
                 {product.category}
               </div>
             </div>

@@ -15,6 +15,7 @@ import EditProductView from './page/EditProductView';
 import ProfileView from './page/ProfileView';
 import EditProfileView from './page/EditProfileView';
 import EditPasswordView from './page/EditPasswordView';
+import Wishlist from './page/Wishlist';
 
 // Loader
 import { loader as HomeLoader } from './page/HomeView';
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
         path: 'profile/:id/change-password',
         element: <EditPasswordView />,
         loader: EditPasswordLoader(store),
+      },
+      {
+        path: '/wishlist',
+        element: <Wishlist />,
       },
     ],
   },

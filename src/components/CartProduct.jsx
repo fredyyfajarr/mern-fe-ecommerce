@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { priceFormat } from '../utils';
-import { FaTrash, FaPencilAlt, FaShoppingCart } from 'react-icons/fa';
+import { FaTrash, FaPencilAlt, FaShoppingCart, FaHeart } from 'react-icons/fa';
 import customAPI from '../api';
 import { toast } from 'react-toastify';
 import { useRevalidator } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../features/cartSlice';
+import { addToWishlist, removeFromWishlist } from '../features/wishlistSlice';
 
 const CartProduct = ({ product, user }) => {
   const { revalidate } = useRevalidator();
   const dispatch = useDispatch();
+  const wishlist = useSelector((state) => state.wishlist.items);
+  const isInWishlist = wishlist.some((item) => item.productId === product._id);
 
   const handleAddToCart = () => {
     const productCart = {
@@ -55,6 +58,23 @@ const CartProduct = ({ product, user }) => {
     );
   };
 
+  const handleToggleWishlist = () => {
+    const productWishlist = {
+      productId: product._id,
+      image: product.image,
+      name: product.name,
+      price: product.price,
+    };
+
+    if (isInWishlist) {
+      dispatch(removeFromWishlist(product._id));
+      toast.success('Removed from wishlist');
+    } else {
+      dispatch(addToWishlist(productWishlist));
+      toast.success('Added to wishlist');
+    }
+  };
+
   return (
     <>
       <div
@@ -92,6 +112,18 @@ const CartProduct = ({ product, user }) => {
               </Link>
             </div>
           )}
+          <div className="absolute top-4 right-4">
+            <button
+              onClick={handleToggleWishlist}
+              className="btn btn-circle btn-ghost"
+            >
+              <FaHeart
+                className={`text-xl ${
+                  isInWishlist ? 'text-red-500' : 'text-gray-400'
+                }`}
+              />
+            </button>
+          </div>
           <h2 className="card-title text-primary hover:text-primary-focus transition-colors duration-200">
             {product.name}
           </h2>

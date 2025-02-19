@@ -1,14 +1,13 @@
 import React from 'react';
 import NavList from './NavList';
 import { NavLink } from 'react-router-dom';
-import { BsCart3 } from 'react-icons/bs';
+import { BsCart3, BsPerson, BsHeart } from 'react-icons/bs';
 import { GiRunningShoe } from 'react-icons/gi';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { useSelector, useDispatch } from 'react-redux';
 import customAPI from '../api';
 import { logoutUser } from '../features/userSlice';
 import { useNavigate } from 'react-router-dom';
-import { BsPerson } from 'react-icons/bs';
 import { clearCartItem } from '../features/cartSlice';
 
 const Nav = () => {
@@ -168,6 +167,16 @@ const Nav = () => {
                     </li>
                     <li>
                       <NavLink
+                        to="/wishlist"
+                        className="flex items-center gap-2 font-bold hover:text-primary bg-base-100"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        <BsHeart className="text-lg" />
+                        My Wishlist
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
                         to="/order"
                         className="flex items-center gap-2 font-bold hover:text-primary bg-base-100"
                         onClick={() => setIsUserMenuOpen(false)}
@@ -186,7 +195,7 @@ const Nav = () => {
                         handlingLogout();
                         setIsUserMenuOpen(false);
                       }}
-                      className="btn btn-error btn-outline w-full font-bold hover:text-white"
+                      className="btn btn-error btn-outline w-full font-bold hover:text-white hover:bg-red-500 hover:border-red-500"
                     >
                       Logout
                     </button>

@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import CartList from '../components/CartList';
 import CartTotal from '../components/CartTotal';
+import AuthModal from '../components/AuthModal';
 
 const CartView = () => {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const user = useSelector((state) => state.userState.user);
   const numItemInCart = useSelector((state) => state.userState.numItemsInCart);
+
+  const handleLoginClick = (e) => {
+    e.preventDefault();
+    setIsAuthModalOpen(true);
+  };
 
   if (numItemInCart === 0) {
     return (
@@ -88,20 +95,27 @@ const CartView = () => {
                 </Link>
               </motion.div>
             ) : (
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Link 
-                  to="/login" 
-                  className="btn btn-primary btn-block text-lg py-4 mt-8 font-medium shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              <>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <span>Login to Checkout</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </Link>
-              </motion.div>
+                  <button 
+                    onClick={handleLoginClick}
+                    className="btn btn-primary btn-block text-lg py-0 mt-0 font-medium shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                  >
+                    <span>Login to Checkout</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </motion.div>
+                <AuthModal 
+                  isOpen={isAuthModalOpen} 
+                  onClose={() => setIsAuthModalOpen(false)} 
+                  isRegister={false}
+                />
+              </>
             )}
           </div>
         </motion.div>
