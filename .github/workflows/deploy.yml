@@ -21,6 +21,3 @@ jobs:
 
       - name: Deploy to Vercel
         run: npx vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
-
-// gepeng anj
-// hari hari re deploy gepeng
