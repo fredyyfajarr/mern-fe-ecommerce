@@ -154,35 +154,53 @@ const Nav = () => {
                   </div>
 
                   {/* Menu Items */}
-                  <ul className="menu p-0 gap-2">
+                  <ul className="menu p-0 gap-3">
                     <li>
                       <NavLink
                         to={`/profile/${user.name}`}
-                        className="flex items-center gap-2 font-bold hover:text-primary bg-base-100"
+                        className={({ isActive }) =>
+                          `relative flex items-center gap-2 font-bold ${
+                            isActive ? 'text-primary bg-primary/10' : 'hover:text-primary'
+                          } bg-base-100 transition-all duration-300 overflow-hidden group py-3 px-4 rounded-lg`
+                        }
                         onClick={() => setIsUserMenuOpen(false)}
                       >
-                        <BsPerson className="text-lg" />
-                        Profile
+                        <span className="absolute left-0 w-0 h-full bg-primary/10 transition-all duration-300 -z-10 group-hover:w-full rounded-lg"></span>
+                        <span className="absolute left-0 w-1 h-0 bg-primary transition-all duration-300 group-hover:h-full rounded-l-lg"></span>
+                        <BsPerson className="text-lg transform group-hover:scale-110 transition-transform duration-300" />
+                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">Profile</span>
                       </NavLink>
                     </li>
                     <li>
                       <NavLink
                         to="/wishlist"
-                        className="flex items-center gap-2 font-bold hover:text-primary bg-base-100"
+                        className={({ isActive }) =>
+                          `relative flex items-center gap-2 font-bold ${
+                            isActive ? 'text-primary bg-primary/10' : 'hover:text-primary'
+                          } bg-base-100 transition-all duration-300 overflow-hidden group py-3 px-4 rounded-lg`
+                        }
                         onClick={() => setIsUserMenuOpen(false)}
                       >
-                        <BsHeart className="text-lg" />
-                        My Wishlist
+                        <span className="absolute left-0 w-0 h-full bg-primary/10 transition-all duration-300 -z-10 group-hover:w-full rounded-lg"></span>
+                        <span className="absolute left-0 w-1 h-0 bg-primary transition-all duration-300 group-hover:h-full rounded-l-lg"></span>
+                        <BsHeart className="text-lg transform group-hover:scale-110 transition-transform duration-300" />
+                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">My Wishlist</span>
                       </NavLink>
                     </li>
                     <li>
                       <NavLink
                         to="/order"
-                        className="flex items-center gap-2 font-bold hover:text-primary bg-base-100"
+                        className={({ isActive }) =>
+                          `relative flex items-center gap-2 font-bold ${
+                            isActive ? 'text-primary bg-primary/10' : 'hover:text-primary'
+                          } bg-base-100 transition-all duration-300 overflow-hidden group py-3 px-4 rounded-lg`
+                        }
                         onClick={() => setIsUserMenuOpen(false)}
                       >
-                        <BsCart3 className="text-lg" />
-                        My Orders
+                        <span className="absolute left-0 w-0 h-full bg-primary/10 transition-all duration-300 -z-10 group-hover:w-full rounded-lg"></span>
+                        <span className="absolute left-0 w-1 h-0 bg-primary transition-all duration-300 group-hover:h-full rounded-l-lg"></span>
+                        <BsCart3 className="text-lg transform group-hover:scale-110 transition-transform duration-300" />
+                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">My Orders</span>
                       </NavLink>
                     </li>
                   </ul>

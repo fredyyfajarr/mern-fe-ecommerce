@@ -28,7 +28,7 @@ const CartList = () => {
           />
         </svg>
         <h3 className="text-3xl text-center font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-          Duh Keranjang Kamu <br /> Masih Kosong Nih :(
+          Duh Keranjang Kamu Masih Kosong Nih :(
         </h3>
         <p className="text-lg lg:text-xl font-semibold text-gray-500 text-center max-w-md">
           Ayo belanja makanya biar bisa flexing ke pacar baru mantan kamu mwehehehe :P
