@@ -84,7 +84,7 @@ const Wishlist = () => {
           className="flex items-center justify-between mb-12"
         >
           <div>
-            <h2 className="text-5xl font-bold text-primary">My Wishlist</h2>
+            <h2 className="text-5xl lg:text-4xl md:text-3xl sm:text-2xl font-bold text-primary">My Wishlist</h2>
             <p className="text-gray-600 mt-3 text-lg">
               {wishlistItems.length} {wishlistItems.length === 1 ? 'item' : 'items'} saved for later
             </p>

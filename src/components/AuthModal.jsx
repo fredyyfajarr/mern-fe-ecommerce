@@ -16,7 +16,7 @@ const AuthModal = ({ isOpen, onClose, isRegister }) => {
             className="absolute right-2 top-2 btn btn-sm btn-circle btn-ghost"
             onClick={onClose}
           >
-            ✕
+            
           </button>
           <FormAuth isRegister={isRegister} isModal={true} onClose={onClose} />
         </div>

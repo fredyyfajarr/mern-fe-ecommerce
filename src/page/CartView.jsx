@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import CartList from '../components/CartList';
@@ -7,13 +7,16 @@ import CartTotal from '../components/CartTotal';
 import AuthModal from '../components/AuthModal';
 
 const CartView = () => {
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [isRegister, setIsRegister] = useState(false);
   const user = useSelector((state) => state.userState.user);
   const numItemInCart = useSelector((state) => state.userState.numItemsInCart);
 
   const handleLoginClick = (e) => {
     e.preventDefault();
-    setIsAuthModalOpen(true);
+    setIsRegister(false); 
+    setShowAuthModal(true);
   };
 
   if (numItemInCart === 0) {
@@ -45,64 +48,64 @@ const CartView = () => {
   }
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="container mx-auto px-4 py-8 max-w-7xl"
-    >
-      <div className="border-b border-primary pb-6 mb-8">
-        <motion.h2 
-          initial={{ y: -20 }}
-          animate={{ y: 0 }}
-          className="pb-5 md:pb-3 lg:pb-4 sm:pb-0 text-4xl md:text-5xl text-center font-bold capitalize bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-        >
-          Shopping Cart
-        </motion.h2>
-        <p className="text-lg text-center text-gray-600 mt-3 sm:mt-0 ">
-          {numItemInCart} {numItemInCart === 1 ? 'item' : 'items'} in your cart
-        </p>
-      </div>
+    <>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="container mx-auto px-4 py-8 max-w-7xl"
+      >
+        <div className="border-b border-primary pb-6 mb-8">
+          <motion.h2 
+            initial={{ y: -20 }}
+            animate={{ y: 0 }}
+            className="pb-5 md:pb-3 lg:pb-4 sm:pb-0 text-4xl md:text-5xl text-center font-bold capitalize bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+          >
+            Shopping Cart
+          </motion.h2>
+          <p className="text-lg text-center text-gray-600 mt-3 sm:mt-0 ">
+            {numItemInCart} {numItemInCart === 1 ? 'item' : 'items'} in your cart
+          </p>
+        </div>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-12">
-        <motion.div 
-          initial={{ x: -20 }}
-          animate={{ x: 0 }}
-          className="lg:col-span-8"
-        >
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <CartList />
-          </div>
-        </motion.div>
-        
-        <motion.div 
-          initial={{ x: 20 }}
-          animate={{ x: 0 }}
-          className="lg:col-span-4"
-        >
-          <div className="bg-white rounded-xl shadow-lg p-8 sticky top-4">
-            <h3 className="text-2xl font-semibold mb-6">Order Summary</h3>
-            <CartTotal />
-            {user ? (
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Link 
-                  to="/checkout" 
-                  className="btn btn-primary btn-block text-lg py-2 mt-8 font-medium text-center shadow-md hover:shadow-lg transition-all"
+        <div className="mt-8 grid gap-8 lg:grid-cols-12">
+          <motion.div 
+            initial={{ x: -20 }}
+            animate={{ x: 0 }}
+            className="lg:col-span-8"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+              <CartList />
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ x: 20 }}
+            animate={{ x: 0 }}
+            className="lg:col-span-4"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-8 sticky top-4">
+              <h3 className="text-2xl font-semibold mb-6">Order Summary</h3>
+              <CartTotal />
+              {user ? (
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <span className="text-center mb-3">Proceed to Checkout</span>
-                </Link>
-              </motion.div>
-            ) : (
-              <>
+                  <Link 
+                    to="/checkout" 
+                    className="btn btn-primary btn-block text-lg py-2 mt-8 font-medium text-center shadow-md hover:shadow-lg transition-all"
+                  >
+                    <span className="text-center mb-3">Proceed to Checkout</span>
+                  </Link>
+                </motion.div>
+              ) : (
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <button 
                     onClick={handleLoginClick}
-                    className="btn btn-primary btn-block text-lg py-0 mt-0 font-medium shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                    className="btn btn-primary btn-block text-lg py-0 mt-3 font-medium shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
                   >
                     <span>Login to Checkout</span>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -110,17 +113,20 @@ const CartView = () => {
                     </svg>
                   </button>
                 </motion.div>
-                <AuthModal 
-                  isOpen={isAuthModalOpen} 
-                  onClose={() => setIsAuthModalOpen(false)} 
-                  isRegister={false}
-                />
-              </>
-            )}
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
+              )}
+            </div>
+          </motion.div>
+        </div>
+        
+        {!user && (
+          <AuthModal 
+            isOpen={showAuthModal}
+            onClose={() => setShowAuthModal(false)}
+            isRegister={isRegister}
+          />
+        )}
+      </motion.div>
+    </>
   );
 };
 
