@@ -18,6 +18,7 @@ export const loader = (storage) => () => {
 
 const EditProfileView = () => {
   const [user, setUser] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -32,17 +33,45 @@ const EditProfileView = () => {
     }
   };
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = Object.fromEntries(new FormData(event.target));
-    const { name, email } = formData;
+    const formData = new FormData(event.target);
 
     try {
+      let profileImageUrl = user.profileImage;
+
+      // Upload image if new one is selected
+      if (formData.get('profileImage').size > 0) {
+        const imageFormData = new FormData();
+        imageFormData.append('image', formData.get('profileImage'));
+        
+        const responseFileUpload = await customAPI.post(
+          'auth/profile/upload-photo',
+          imageFormData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
+        profileImageUrl = responseFileUpload.data.url;
+      }
+
+      // Update profile data
       const { data } = await customAPI.put(`/auth/profile/${id}`, {
-        name,
-        email,
+        name: formData.get('name'),
+        email: formData.get('email'),
+        profileImage: profileImageUrl,
       });
-      dispatch(setUserRedux(data.data)); // Update Redux state with new user data
+
+      dispatch(setUserRedux(data.data));
       toast.success('Profile updated successfully');
       navigate(`/profile/${id}`);
     } catch (error) {
@@ -62,6 +91,31 @@ const EditProfileView = () => {
 
           {user ? (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Profile Image Upload */}
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text font-medium">Profile Photo</span>
+                </label>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="avatar">
+                    <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                      <img
+                        src={imagePreview || user.profileImage || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
+                        alt={user.name}
+                      />
+                    </div>
+                  </div>
+                  <input
+                    type="file"
+                    name="profileImage"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="file-input file-input-bordered file-input-primary w-full max-w-xs"
+                  />
+                </div>
+              </div>
+
+              {/* Existing form inputs */}
               <FormInput
                 label="Name"
                 name="name"
@@ -77,6 +131,7 @@ const EditProfileView = () => {
                 className="w-full"
               />
 
+              {/* Existing buttons */}
               <div className="flex justify-end gap-4">
                 <button
                   type="button"

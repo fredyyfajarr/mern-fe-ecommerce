@@ -25,7 +25,7 @@ const ProfileView = () => {
               <div className="avatar">
                 <div className="w-32 sm:w-24 rounded-full ring-4 ring-primary ring-offset-4 ring-offset-base-100 hover:scale-105 transition-transform duration-300">
                   <img 
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    src={user.profileImage || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
                     alt={user.name}
                     className="object-cover"
                   />
