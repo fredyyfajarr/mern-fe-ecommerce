@@ -9,6 +9,7 @@ import customAPI from '../api';
 import { logoutUser } from '../features/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { clearCartItem } from '../features/cartSlice';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const Nav = () => {
   const user = useSelector((state) => state.userState.user);
@@ -96,6 +97,7 @@ const Nav = () => {
           </div>
         </div>
         <div className="navbar-end gap-2">
+          <ThemeSwitcher /> {/* Add this line */}
           <NavLink
             to="/carts"
             className="btn btn-ghost btn-circle btn-md hover:bg-primary hover:text-white transition-all"

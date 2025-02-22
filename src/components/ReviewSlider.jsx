@@ -36,13 +36,13 @@ const ReviewSlider = () => {
   }, []);
 
   return (
-    <div className="bg-white py-16">
+    <div className="bg-base-100 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold capitalize text-primary">
             What Customers Say
           </h2>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-base-content/70">
             Read trusted reviews from our customers
           </p>
         </div>
@@ -60,7 +60,7 @@ const ReviewSlider = () => {
                 <div className="max-w-3xl mx-auto">
                   <div className="text-center">
                     <img
-                      className="w-20 h-20 rounded-full mx-auto mb-4"
+                      className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
                       src={review.image}
                       alt={review.name}
                     />
@@ -68,7 +68,7 @@ const ReviewSlider = () => {
                       {[...Array(review.rating)].map((_, index) => (
                         <svg
                           key={index}
-                          className="w-5 h-5 text-yellow-400"
+                          className="w-5 h-5 text-yellow-400" // Changed from text-warning to text-yellow-400
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -76,8 +76,8 @@ const ReviewSlider = () => {
                         </svg>
                       ))}
                     </div>
-                    <p className="text-lg font-semibold text-gray-600 italic mb-4">"{review.review}"</p>
-                    <p className="text-2xl font-bold text-gray-800">{review.name}</p>
+                    <p className="text-lg font-semibold text-base-content/80 italic mb-4">"{review.review}"</p>
+                    <p className="text-2xl font-bold text-base-content">{review.name}</p>
                   </div>
                 </div>
               </div>
@@ -88,8 +88,8 @@ const ReviewSlider = () => {
             {reviews.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full ${
-                  currentSlide === index ? 'bg-primary' : 'bg-gray-300'
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  currentSlide === index ? 'bg-primary' : 'bg-base-300'
                 }`}
                 onClick={() => setCurrentSlide(index)}
               />

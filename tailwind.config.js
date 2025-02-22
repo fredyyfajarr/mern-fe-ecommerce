@@ -26,6 +26,11 @@ export default {
   },
   plugins: [daisyui],
   daisyui: {
-    themes: ['winter'],
+    themes: [
+      'winter', // Light theme
+      'night', // Dark theme
+      'garden', // Nature theme
+      'halloween' // Halloween theme
+    ],
   },
 };

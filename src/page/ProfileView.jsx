@@ -12,13 +12,15 @@ export const loader = (storage) => () => {
   return null;
 };
 
+// * gajadi update wkwk
+
 const ProfileView = () => {
   const user = useSelector((state) => state.userState.user);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-base-200">
       <div className="container mx-auto px-4 py-8">
-        <div className="card bg-white shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+        <div className="card bg-base-100 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
           <div className="card-body p-4 sm:p-6">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
               {/* Avatar Section */}
@@ -60,26 +62,28 @@ const ProfileView = () => {
                 </div>
 
                 {/* User Details */}
-                <div className="space-y-4 bg-gray-50 p-4 rounded-lg">
+                <div className="space-y-4 bg-base-200 p-4 rounded-lg">
                   <div className="grid grid-cols-1 sm:grid-cols-[100px_20px_auto] gap-2 sm:items-center">
-                    <span className="text-gray-600 font-medium">Email</span>
-                    <span className="hidden sm:block">:</span>
+                    <span className="text-base-content/70 font-medium">Email</span>
+                    <span className="hidden sm:block text-base-content/70">:</span>
                     <span className="font-medium text-primary">{user.email}</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-[100px_20px_auto] gap-2 sm:items-center">
-                    <span className="text-gray-600 font-medium">Role</span>
-                    <span className="hidden sm:block">:</span>
+                    <span className="text-base-content/70 font-medium">Role</span>
+                    <span className="hidden sm:block text-base-content/70">:</span>
                     <span className="font-medium capitalize bg-primary/10 text-primary px-3 py-1 rounded-full inline-block w-fit">
                       {user.role}
                     </span>
                   </div>
                   
                   {/* Stats Card */}
-                  <div className="stats shadow-lg bg-white mt-6">
+                  <div className="stats shadow-lg bg-base-100 mt-6">
                     <div className="stat">
-                      <div className="font-bold stat-title text-gray-600">Member Since</div>
+                      <div className="font-bold stat-title text-base-content/70">Member Since</div>
                       <div className="stat-value text-primary text-2xl">2024</div>
-                      <div className="font-bold stat-desc">Joined {new Date().toLocaleDateString()}</div>
+                      <div className="font-bold stat-desc text-base-content/60">
+                        Joined {new Date().toLocaleDateString()}
+                      </div>
                     </div>
                   </div>
                 </div>

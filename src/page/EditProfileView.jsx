@@ -16,6 +16,10 @@ export const loader = (storage) => () => {
   return null;
 };
 
+// * gajadi update wkwk 
+
+//? Frontend by Eka Revandi 
+
 const EditProfileView = () => {
   const [user, setUser] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -87,15 +91,12 @@ const EditProfileView = () => {
     <div className="max-w-2xl mx-auto p-4">
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title text-2xl mb-6">Edit Profile</h2>
+          <h2 className=" text-center font-bold text-2xl mb-6">Edit Your Profile</h2>
 
           {user ? (
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Profile Image Upload */}
               <div className="form-control w-full">
-                <label className="label">
-                  <span className="label-text font-medium">Profile Photo</span>
-                </label>
                 <div className="flex flex-col items-center gap-4">
                   <div className="avatar">
                     <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
