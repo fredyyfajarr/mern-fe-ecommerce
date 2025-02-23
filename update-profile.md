@@ -7,3 +7,8 @@ router.post('/auth/profile/upload-photo', upload.single('image'), async (req, re
     res.status(500).json({ message: 'Failed to upload image' });
   }
 });
+
+nih ya gua kasih contoh route server nya gua cari dari ai si begini soal tampilan nya udah. di edit provile.jsx
+
+
+
