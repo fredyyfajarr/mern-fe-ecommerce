@@ -92,7 +92,7 @@ const CheckoutView = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base-200 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-base-200 rounded-xl py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center border-b border-primary pb-8">
