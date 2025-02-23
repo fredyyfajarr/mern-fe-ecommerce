@@ -17,7 +17,7 @@ const reviews = [
   },
   {
     id: 3,
-    name: "Pais Bentang",
+    name: "Paisssss",
     rating: 5,
     image: "/pais.jpg",
     review: "Gila ga nyangka banget nemu toko se keren ini, sukses terus 😎",
