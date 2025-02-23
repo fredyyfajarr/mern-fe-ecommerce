@@ -1,19 +1,69 @@
+import { useEffect } from 'react';
 import { generateSelectAmount, priceFormat } from '../utils';
 import { FaTrash } from 'react-icons/fa6';
 import { useDispatch } from 'react-redux';
-import { editItem, removeItem } from '../features/cartSlice';
+import {
+  editItem,
+  removeItem,
+  fetchCartFromBackend,
+  removeCartItemFromBackend,
+} from '../features/cartSlice';
 import { motion } from 'framer-motion';
+import customAPI from '../api';
+import { toast } from 'react-toastify';
 
 const CartListItems = ({ cartItem }) => {
-  const { cartId, name, price, image, amount, stock } = cartItem;
+  const { cartId, name, price, image, amount, stock, productId } = cartItem;
+
   const dispatch = useDispatch();
 
-  const handleAmount = (e) => {
-    dispatch(editItem({ cartId, amount: parseInt(e.target.value) }));
+  // Fetch cart data dari backend saat komponen dimuat
+  useEffect(() => {
+    dispatch(fetchCartFromBackend());
+  }, [dispatch]);
+
+  const handleAmount = async (e) => {
+    const newQuantity = parseInt(e.target.value);
+
+    console.log('Updating quantity for Cart ID:', cartId);
+
+    if (!cartId) {
+      console.error('Cart ID is missing');
+      return;
+    }
+
+    try {
+      // Update backend dulu
+      await customAPI.put(`cart/${cartId}`, { quantity: newQuantity });
+      console.log('Quantity updated successfully');
+
+      // Update Redux setelah backend berhasil
+      dispatch(editItem({ cartId, amount: newQuantity }));
+      dispatch(fetchCartFromBackend()); // Ambil cart terbaru dari backend
+    } catch (error) {
+      console.error('Error updating quantity:', error);
+      toast.error('Failed to update quantity');
+    }
   };
 
-  const removeProductItem = () => {
-    dispatch(removeItem({ cartId }));
+  const removeItemCart = async () => {
+    if (!cartId) {
+      console.error('Cart ID is missing');
+      return;
+    }
+
+    try {
+      // Hapus dari backend dulu
+      await customAPI.delete(`/cart/${cartId}`);
+
+      // Hapus dari Redux setelah backend sukses
+      dispatch(removeItem({ cartId }));
+      dispatch(removeCartItemFromBackend(cartId));
+      dispatch(fetchCartFromBackend()); // Ambil cart terbaru dari backend
+    } catch (error) {
+      console.error('Error removing item:', error);
+      toast.error('Failed to remove item');
+    }
   };
 
   return (
@@ -27,7 +77,7 @@ const CartListItems = ({ cartItem }) => {
       key={cartId}
     >
       {/* Image Container */}
-      <motion.div 
+      <motion.div
         whileHover={{ scale: 1.05 }}
         className="w-full md:w-auto flex justify-center"
       >
@@ -41,9 +91,14 @@ const CartListItems = ({ cartItem }) => {
       {/* Product Details */}
       <div className="flex flex-col md:flex-row items-center md:items-start gap-4 flex-1">
         <div className=" md:text-left">
-          <h2 className="text-xl md:text-2xl font-bold capitalize mb-2">{name}</h2>
+          <h2 className="text-xl md:text-2xl font-bold capitalize mb-2">
+            {name || 'Loading...'}{' '}
+            {/* Tampilan sementara jika name masih undefined */}
+          </h2>
           <p className="text-gray-600 mb-2">Quantity: {amount}</p>
-          <p className="text-2xl font-bold text-primary">{priceFormat(price)}</p>
+          <p className="text-2xl font-bold text-primary">
+            {priceFormat(price * amount)}
+          </p>
         </div>
 
         {/* Controls */}
@@ -61,7 +116,7 @@ const CartListItems = ({ cartItem }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn btn-error btn-sm w-32 flex items-center gap-2 text-white"
-            onClick={removeProductItem}
+            onClick={removeItemCart}
           >
             <FaTrash className="w-4 h-4" />
             <span>Remove</span>

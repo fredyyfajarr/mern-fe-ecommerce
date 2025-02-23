@@ -49,6 +49,7 @@ const CheckoutView = () => {
     const data = Object.fromEntries(formdata);
 
     const newArrayCart = carts.map((item) => {
+      console.log('Carts Data:', carts);
       return {
         product: item.productId,
         quantity: item.amount,

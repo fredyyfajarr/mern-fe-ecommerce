@@ -15,7 +15,7 @@ const CartProduct = ({ product, user }) => {
   const wishlist = useSelector((state) => state.wishlist.items);
   const isInWishlist = wishlist.some((item) => item.productId === product._id);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     const productCart = {
       cartId: product._id + product.name,
       productId: product._id,
@@ -26,7 +26,18 @@ const CartProduct = ({ product, user }) => {
       amount: 1, // Set default amount to 1
     };
 
+    // Simpan ke Redux & localStorage
     dispatch(addItem({ product: productCart }));
+
+    try {
+      // Kirim data cart ke backend (update jika produk sudah ada)
+      await customAPI.post('/cart', {
+        items: [{ product: product._id, quantity: 1, price: product.price }],
+      });
+    } catch (error) {
+      console.error('Error saving to backend:', error);
+      toast.error('Failed to save cart to backend');
+    }
   };
 
   const handleDelete = async () => {

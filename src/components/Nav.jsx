@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavList from './NavList';
 import { NavLink } from 'react-router-dom';
 import { BsCart3, BsPerson, BsHeart } from 'react-icons/bs';
@@ -141,7 +141,11 @@ const Nav = () => {
                         ✕
                       </button>
                     </div>
-                    <img src="/logo-sepatu-biru.png" alt="" className="h-12 w-36 drop-shadow-lg mx-auto animate-bounce"/>
+                    <img
+                      src="/logo-sepatu-biru.png"
+                      alt=""
+                      className="h-12 w-36 drop-shadow-lg mx-auto animate-bounce"
+                    />
                     <h2 className="text-xl font-bold mt-2">FrevanShop</h2>
                     <div className="mt-4 p-3 bg-primary/10 rounded-lg drop-shadow-2xl">
                       <span className="font-semibold text-primary block">

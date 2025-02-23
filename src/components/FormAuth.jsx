@@ -16,7 +16,7 @@ const FormAuth = ({ isRegister, isModal = false, onClose }) => {
     try {
       const endpoint = isRegister ? '/auth/register' : '/auth/login';
       const response = await customAPI.post(endpoint, data);
-      
+
       if (isRegister) {
         dispatch(registerUser(response.data));
         toast.success('Register Success');
@@ -24,7 +24,7 @@ const FormAuth = ({ isRegister, isModal = false, onClose }) => {
         dispatch(loginUser(response.data));
         toast.success('Login Success');
       }
-      
+
       if (onClose) onClose();
     } catch (error) {
       const errorMessage = error?.response?.data?.message;
@@ -35,7 +35,9 @@ const FormAuth = ({ isRegister, isModal = false, onClose }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`card ${!isModal ? 'w-96' : 'w-full'} p-8 bg-base-100 flex flex-col gap-y-4`}
+      className={`card ${
+        !isModal ? 'w-96' : 'w-full'
+      } p-8 bg-base-100 flex flex-col gap-y-4`}
     >
       <h4 className="text-center text-3xl font-bold">
         {isRegister ? 'Register' : 'Login'}

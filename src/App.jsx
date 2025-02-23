@@ -107,7 +107,20 @@ const router = createBrowserRouter([
   },
 ]);
 
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCartFromBackend } from './features/cartSlice';
+
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.userState.user); // Ambil user dari Redux
+
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchCartFromBackend());
+    }
+  }, [user, dispatch]); // Akan dipanggil saat user berubah
+
   return (
     <CartProvider>
       <RouterProvider router={router} />

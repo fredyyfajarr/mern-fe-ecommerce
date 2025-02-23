@@ -1,26 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import CartListItems from './CartListItems';
 import { motion } from 'framer-motion';
 
 const CartList = () => {
-  const carts = useSelector((state) => state.cartState.CartItems);
+  const carts = useSelector((state) => state.cartState?.CartItems ?? []);
+
+  useEffect(() => {}, [carts]);
 
   if (carts.length === 0) {
     return (
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="flex flex-col items-center justify-center py-12"
       >
-        <svg 
+        <svg
           className="w-24 h-24 text-primary/60 mb-6 animate-bounce"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path 
+          <path
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
@@ -31,17 +33,15 @@ const CartList = () => {
           Duh Keranjang Kamu <br /> Masih Kosong Nih :(
         </h3>
         <p className="text-lg lg:text-xl font-semibold text-gray-500 text-center max-w-md">
-          Ayo belanja makanya biar bisa flexing ke pacar baru mantan kamu mwehehehe :P
+          Ayo belanja makanya biar bisa flexing ke pacar baru mantan kamu
+          mwehehehe :P
         </p>
       </motion.div>
     );
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-    >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       {carts.map((item) => {
         return <CartListItems cartItem={item} key={item.cartId} />;
       })}
