@@ -194,9 +194,21 @@ const cartSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state));
     }),
       builder.addCase(removeCartItemFromBackend.fulfilled, (state, action) => {
-        state.items = state.items.filter(
-          (item) => item.cartId !== action.payload.cartId
+        state.CartItems = state.CartItems.filter(
+          (item) => item.cartId !== action.payload // Hapus berdasarkan `cartId`
         );
+
+        // Perbarui jumlah item dan total harga setelah penghapusan
+        state.numItemsInCart = state.CartItems.reduce(
+          (acc, item) => acc + item.amount,
+          0
+        );
+        state.cartTotal = state.CartItems.reduce(
+          (acc, item) => acc + item.price * item.amount,
+          0
+        );
+
+        localStorage.setItem('cart', JSON.stringify(state));
       });
   },
 });

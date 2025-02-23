@@ -25,8 +25,6 @@ const CartListItems = ({ cartItem }) => {
   const handleAmount = async (e) => {
     const newQuantity = parseInt(e.target.value);
 
-    console.log('Updating quantity for Cart ID:', cartId);
-
     if (!cartId) {
       console.error('Cart ID is missing');
       return;
@@ -35,7 +33,6 @@ const CartListItems = ({ cartItem }) => {
     try {
       // Update backend dulu
       await customAPI.put(`cart/${cartId}`, { quantity: newQuantity });
-      console.log('Quantity updated successfully');
 
       // Update Redux setelah backend berhasil
       dispatch(editItem({ cartId, amount: newQuantity }));
