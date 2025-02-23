@@ -9,22 +9,22 @@ const CartTotal = () => {
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg p-4 md:p-6"
+      className="bg-base-100 rounded-lg p-4 md:p-6"
     >
       <div className="space-y-3 md:space-y-4">
         {/* Subtotal */}
-        <div className="flex justify-between items-center pb-2 md:pb-3 border-b border-gray-200">
-          <span className="text-sm md:text-base text-gray-600">
+        <div className="flex justify-between items-center pb-2 md:pb-3 border-b border-base-300">
+          <span className="text-sm md:text-base text-base-content/70">
             Subtotal <br /> ({numItemsInCart} items)
           </span>
-          <span className="text-sm md:text-base font-medium">
+          <span className="text-sm md:text-base font-medium text-base-content">
             {priceFormat(cartTotal)}
           </span>
         </div>
 
         {/* Shipping Estimate */}
-        <div className="flex justify-between items-center pb-2 md:pb-3 border-b border-gray-200">
-          <span className="text-sm md:text-base text-gray-600">
+        <div className="flex justify-between items-center pb-2 md:pb-3 border-b border-base-300">
+          <span className="text-sm md:text-base text-base-content/70">
             Shipping Estimate
           </span>
           <span className="text-sm md:text-base font-medium text-primary">
@@ -45,7 +45,7 @@ const CartTotal = () => {
         </motion.div>
 
         {/* Tax Note */}
-        <p className="text-[10px] md:text-xs text-gray-500 mt-2 md:mt-4">
+        <p className="text-[10px] md:text-xs text-base-content/50 mt-2 md:mt-4">
           * Tax will be calculated at checkout
         </p>
       </div>

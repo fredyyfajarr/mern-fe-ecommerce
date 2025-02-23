@@ -93,14 +93,14 @@ const CheckoutView = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-base-200 rounded-xl py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center border-b border-primary pb-8">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 capitalize">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-base-content capitalize">
             Checkout Details
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-base-content/70">
             Please fill in your information to complete the order
           </p>
         </div>
@@ -109,7 +109,7 @@ const CheckoutView = () => {
         <div className="mt-10 grid gap-8 lg:grid-cols-12">
           {/* Form Section */}
           <div className="lg:col-span-8">
-            <div className="bg-white shadow-lg rounded-2xl">
+            <div className="bg-base-100 shadow-lg rounded-2xl">
               <form
                 method="POST"
                 className="p-6 md:p-8 space-y-6"
@@ -167,7 +167,7 @@ const CheckoutView = () => {
 
           {/* Cart Summary Section */}
           <div className="lg:col-span-4">
-            <div className="bg-white shadow-lg rounded-2xl p-6 md:p-8 sticky top-8">
+            <div className="bg-base-100 shadow-lg rounded-2xl p-6 md:p-8 sticky top-8">
               <h3 className="text-xl font-bold mb-6 pb-4 border-b">
                 Order Summary
               </h3>

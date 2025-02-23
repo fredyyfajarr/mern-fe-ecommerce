@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../features/cartSlice';
 import { addToWishlist, removeFromWishlist } from '../features/wishlistSlice';
 
-const CartProduct = ({ product, user }) => {
+const CartProduct = ({ product, user, className }) => {
   const { revalidate } = useRevalidator();
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.items);
@@ -87,9 +87,9 @@ const CartProduct = ({ product, user }) => {
   };
 
   return (
-    <>
+    <div className={className}>
       <div
-        className="card bg-base-300 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+        className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300"
         key={product._id}
       >
         <figure className="relative overflow-hidden group aspect-[4/3] flex items-center justify-center bg-white p-4">
@@ -162,7 +162,7 @@ const CartProduct = ({ product, user }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

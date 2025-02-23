@@ -34,7 +34,7 @@ const HomeView = () => {
           <h2 className="text-3xl font-bold capitalize text-primary">
             Featured Products
           </h2>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-base-content/70">
             Discover our handpicked selection just for you
           </p>
         </div>
@@ -42,32 +42,30 @@ const HomeView = () => {
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {products.map((product) => (
-            <div
-              className="transform transition duration-300 hover:scale-105"
-              key={product._id}
+            <CartProduct 
+              key={product._id} 
+              product={product}
               data-aos="fade-up"
-            >
-              <CartProduct product={product} />
-            </div>
+            />
           ))}
         </div>
       </div>
 
       {/* Gallery Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-gray-50" data-aos="fade-up">
+      <div className="max-w-7xl rounded-xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-base-200" data-aos="fade-up">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold capitalize text-primary">
             Koleksi Kami
           </h2>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-base-content/70">
             Lihat beberapa koleksi terbaik kami
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Sports Collection */}
-          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group" data-aos="zoom-in">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/50 transition-opacity group-hover:opacity-90"></div>
+          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group bg-base-100" data-aos="zoom-in">
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral to-neutral/50 transition-opacity group-hover:opacity-90"></div>
             <img
               src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=2070&auto=format&fit=crop"
               alt="Sports Collection"
@@ -82,8 +80,8 @@ const HomeView = () => {
           </div>
 
           {/* Running Series */}
-          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group" data-aos="zoom-in">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/50 transition-opacity group-hover:opacity-90"></div>
+          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group bg-base-100" data-aos="zoom-in">
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral to-neutral/50 transition-opacity group-hover:opacity-90"></div>
             <img
               src="https://images.unsplash.com/photo-1556278777-a2a98c0d56da?w=600&auto=format&fit=crop"
               alt="Running Series"
@@ -98,8 +96,8 @@ const HomeView = () => {
           </div>
 
           {/* Lifestyle Collection */}
-          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group" data-aos="zoom-in">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/50 transition-opacity group-hover:opacity-90"></div>
+          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group bg-base-100" data-aos="zoom-in">
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral to-neutral/50 transition-opacity group-hover:opacity-90"></div>
             <img
               src="https://images.unsplash.com/photo-1562183241-840b8af0721e?w=600&auto=format&fit=crop"
               alt="Lifestyle Collection"
@@ -114,8 +112,8 @@ const HomeView = () => {
           </div>
 
           {/* Limited Edition */}
-          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group" data-aos="zoom-in">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/50 transition-opacity group-hover:opacity-90"></div>
+          <div className="relative overflow-hidden aspect-[4/3] rounded-xl group bg-base-100" data-aos="zoom-in">
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral to-neutral/50 transition-opacity group-hover:opacity-90"></div>
             <img
               src="https://images.unsplash.com/photo-1523212465813-857a9d1a19f4?w=600&auto=format&fit=crop"
               alt="Limited Edition"

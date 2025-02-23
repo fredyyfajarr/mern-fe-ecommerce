@@ -81,17 +81,19 @@ const Wishlist = () => {
         <motion.div 
           initial={{ y: -20 }}
           animate={{ y: 0 }}
-          className="flex items-center justify-between mb-12"
+          className="flex flex-col sm:flex-row items-center sm:justify-between mb-12 space-y-4 sm:space-y-0"
         >
-          <div>
-            <h2 className="text-5xl lg:text-4xl md:text-3xl sm:text-2xl font-bold text-primary">My Wishlist</h2>
-            <p className="text-gray-600 mt-3 text-lg">
+          <div className="text-center sm:text-left">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary">
+              My Wishlist
+            </h2>
+            <p className="text-gray-600 mt-2 text-base sm:text-lg">
               {wishlistItems.length} {wishlistItems.length === 1 ? 'item' : 'items'} saved for later
             </p>
           </div>
           <Link 
             to="/" 
-            className="btn btn-ghost gap-2 hover:scale-105 transition-transform"
+            className="btn btn-primary gap-2 hover:scale-105 transition-transform w-full sm:w-auto sm:max-w-xs"
           >
             <FaArrowLeft /> Continue Shopping
           </Link>

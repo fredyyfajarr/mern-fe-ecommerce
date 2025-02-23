@@ -58,8 +58,8 @@ const EditProductView = () => {
     getProductId();
   }, []);
   return (
-    <div className="min-h-screen p-4 bg-gray-50">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+    <div className="min-h-screen p-4 bg-base-200">
+      <div className="max-w-2xl mx-auto bg-base-100 rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Edit Produk
         </h2>
