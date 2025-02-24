@@ -26,9 +26,9 @@ const ProfileView = () => {
               {/* Avatar Section */}
               <div className="avatar">
                 <div className="w-32 sm:w-24 rounded-full ring-4 ring-primary ring-offset-4 ring-offset-base-100 hover:scale-105 transition-transform duration-300">
-                  <img 
-                    src={user.profileImage || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
-                    alt={user.name}
+                  <img
+                    src={user?.profile_image}
+                    alt={user?.name}
                     className="object-cover"
                   />
                 </div>
@@ -38,25 +38,29 @@ const ProfileView = () => {
               <div className="flex-1 w-full">
                 <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
                   <h2 className="card-title text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-0">
-                    {user.name}
+                    {user?.name}
                   </h2>
                   {/* Modified buttons container */}
                   <div className="flex flex-col w-full sm:w-auto sm:flex-row gap-3">
-                    <Link 
-                      to={`/profile/${user._id}/edit`}
+                    <Link
+                      to={`/profile/${user?._id}/edit`}
                       className="btn btn-primary w-full sm:w-auto px-6 py-2 text-sm sm:text-base font-medium hover:scale-105 transition-all duration-200 flex items-center justify-center"
                     >
                       <i className="fas fa-edit text-lg sm:mr-2"></i>
                       <span className="hidden sm:inline">Edit Profile</span>
-                      <span className="text-lg font-semibold sm:hidden">Edit Profile</span>
+                      <span className="text-lg font-semibold sm:hidden">
+                        Edit Profile
+                      </span>
                     </Link>
-                    <Link 
-                      to={`/profile/${user._id}/change-password`}
+                    <Link
+                      to={`/profile/${user?._id}/change-password`}
                       className="btn btn-secondary w-full sm:w-auto px-6 py-2 text-sm sm:text-base font-medium hover:scale-105 transition-all duration-200 flex items-center justify-center"
                     >
                       <i className="fas fa-key text-lg sm:mr-2"></i>
                       <span className="hidden sm:inline">Change Password</span>
-                      <span className="text-lg font-semibold sm:hidden">Change Password</span>
+                      <span className="text-lg font-semibold sm:hidden">
+                        Change Password
+                      </span>
                     </Link>
                   </div>
                 </div>
@@ -64,23 +68,37 @@ const ProfileView = () => {
                 {/* User Details */}
                 <div className="space-y-4 bg-base-200 p-4 rounded-lg">
                   <div className="grid grid-cols-1 sm:grid-cols-[100px_20px_auto] gap-2 sm:items-center">
-                    <span className="text-base-content/70 font-medium">Email</span>
-                    <span className="hidden sm:block text-base-content/70">:</span>
-                    <span className="font-medium text-primary">{user.email}</span>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-[100px_20px_auto] gap-2 sm:items-center">
-                    <span className="text-base-content/70 font-medium">Role</span>
-                    <span className="hidden sm:block text-base-content/70">:</span>
-                    <span className="font-medium capitalize bg-primary/10 text-primary px-3 py-1 rounded-full inline-block w-fit">
-                      {user.role}
+                    <span className="text-base-content/70 font-medium">
+                      Email
+                    </span>
+                    <span className="hidden sm:block text-base-content/70">
+                      :
+                    </span>
+                    <span className="font-medium text-primary">
+                      {user?.email}
                     </span>
                   </div>
-                  
+                  <div className="grid grid-cols-1 sm:grid-cols-[100px_20px_auto] gap-2 sm:items-center">
+                    <span className="text-base-content/70 font-medium">
+                      Role
+                    </span>
+                    <span className="hidden sm:block text-base-content/70">
+                      :
+                    </span>
+                    <span className="font-medium capitalize bg-primary/10 text-primary px-3 py-1 rounded-full inline-block w-fit">
+                      {user?.role}
+                    </span>
+                  </div>
+
                   {/* Stats Card */}
                   <div className="stats shadow-lg bg-base-100 mt-6">
                     <div className="stat">
-                      <div className="font-bold stat-title text-base-content/70">Member Since</div>
-                      <div className="stat-value text-primary text-2xl">2024</div>
+                      <div className="font-bold stat-title text-base-content/70">
+                        Member Since
+                      </div>
+                      <div className="stat-value text-primary text-2xl">
+                        2024
+                      </div>
                       <div className="font-bold stat-desc text-base-content/60">
                         Joined {new Date().toLocaleDateString()}
                       </div>

@@ -45,6 +45,13 @@ const FormAuth = ({ isRegister, isModal = false, onClose }) => {
       {isRegister && <FormInput type="name" name="name" label="Username" />}
       <FormInput type="email" name="email" label="Email" />
       <FormInput type="password" name="password" label="Password" />
+      {isRegister && (
+        <FormInput
+          type="hidden"
+          name="profile_image"
+          value="https://res.cloudinary.com/dlpqwetbk/image/upload/v1740400315/default_img_sfc36a.png"
+        />
+      )}
       <div className="mt-4">
         <button type="submit" className="btn btn-primary btn-block">
           {isRegister ? 'Register' : 'Login'}
