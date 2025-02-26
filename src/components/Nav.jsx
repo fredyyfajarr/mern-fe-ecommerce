@@ -35,12 +35,6 @@ const Nav = () => {
     <nav className="bg-base-200 sticky top-0 z-50 shadow-md">
       <div className="navbar mx-auto max-w-6xl px-8">
         <div className="navbar-start">
-          <NavLink
-            to="/"
-            className="hidden lg:flex btn btn-primary text-3xl items-center rounded-full hover:scale-105 transition-all duration-200"
-          >
-            <GiRunningShoe className="hover:rotate-12 transition-all" />
-          </NavLink>
           {/* Mobile Device */}
           <div className="lg:hidden">
             <button
@@ -166,7 +160,9 @@ const Nav = () => {
                         to={`/profile/${user.name}`}
                         className={({ isActive }) =>
                           `relative flex items-center gap-2 font-bold ${
-                            isActive ? 'text-primary bg-primary/10' : 'hover:text-primary'
+                            isActive
+                              ? 'text-primary bg-primary/10'
+                              : 'hover:text-primary'
                           } bg-base-100 transition-all duration-300 overflow-hidden group py-3 px-4 rounded-lg`
                         }
                         onClick={() => setIsUserMenuOpen(false)}
@@ -174,7 +170,9 @@ const Nav = () => {
                         <span className="absolute left-0 w-0 h-full bg-primary/10 transition-all duration-300 -z-10 group-hover:w-full rounded-lg"></span>
                         <span className="absolute left-0 w-1 h-0 bg-primary transition-all duration-300 group-hover:h-full rounded-l-lg"></span>
                         <BsPerson className="text-lg transform group-hover:scale-110 transition-transform duration-300" />
-                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">Profile</span>
+                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">
+                          Profile
+                        </span>
                       </NavLink>
                     </li>
                     <li>
@@ -182,7 +180,9 @@ const Nav = () => {
                         to="/wishlist"
                         className={({ isActive }) =>
                           `relative flex items-center gap-2 font-bold ${
-                            isActive ? 'text-primary bg-primary/10' : 'hover:text-primary'
+                            isActive
+                              ? 'text-primary bg-primary/10'
+                              : 'hover:text-primary'
                           } bg-base-100 transition-all duration-300 overflow-hidden group py-3 px-4 rounded-lg`
                         }
                         onClick={() => setIsUserMenuOpen(false)}
@@ -190,7 +190,9 @@ const Nav = () => {
                         <span className="absolute left-0 w-0 h-full bg-primary/10 transition-all duration-300 -z-10 group-hover:w-full rounded-lg"></span>
                         <span className="absolute left-0 w-1 h-0 bg-primary transition-all duration-300 group-hover:h-full rounded-l-lg"></span>
                         <BsHeart className="text-lg transform group-hover:scale-110 transition-transform duration-300" />
-                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">My Wishlist</span>
+                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">
+                          My Wishlist
+                        </span>
                       </NavLink>
                     </li>
                     <li>
@@ -198,7 +200,9 @@ const Nav = () => {
                         to="/order"
                         className={({ isActive }) =>
                           `relative flex items-center gap-2 font-bold ${
-                            isActive ? 'text-primary bg-primary/10' : 'hover:text-primary'
+                            isActive
+                              ? 'text-primary bg-primary/10'
+                              : 'hover:text-primary'
                           } bg-base-100 transition-all duration-300 overflow-hidden group py-3 px-4 rounded-lg`
                         }
                         onClick={() => setIsUserMenuOpen(false)}
@@ -206,7 +210,9 @@ const Nav = () => {
                         <span className="absolute left-0 w-0 h-full bg-primary/10 transition-all duration-300 -z-10 group-hover:w-full rounded-lg"></span>
                         <span className="absolute left-0 w-1 h-0 bg-primary transition-all duration-300 group-hover:h-full rounded-l-lg"></span>
                         <BsCart3 className="text-lg transform group-hover:scale-110 transition-transform duration-300" />
-                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">My Orders</span>
+                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">
+                          My Orders
+                        </span>
                       </NavLink>
                     </li>
                   </ul>

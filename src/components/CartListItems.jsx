@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { generateSelectAmount, priceFormat } from '../utils';
 import { FaTrash } from 'react-icons/fa6';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   editItem,
   removeItem,
@@ -14,6 +14,7 @@ import { toast } from 'react-toastify';
 
 const CartListItems = ({ cartItem }) => {
   const { cartId, name, price, image, amount, stock, productId } = cartItem;
+  const user = useSelector((state) => state.userState.user);
 
   const dispatch = useDispatch();
 
@@ -30,12 +31,14 @@ const CartListItems = ({ cartItem }) => {
       return;
     }
 
+    dispatch(editItem({ cartId, amount: newQuantity }));
+    if (!user) return;
+
     try {
       // Update backend dulu
       await customAPI.put(`cart/${cartId}`, { quantity: newQuantity });
 
       // Update Redux setelah backend berhasil
-      dispatch(editItem({ cartId, amount: newQuantity }));
       dispatch(fetchCartFromBackend()); // Ambil cart terbaru dari backend
     } catch (error) {
       console.error('Error updating quantity:', error);
@@ -48,13 +51,13 @@ const CartListItems = ({ cartItem }) => {
       console.error('Cart ID is missing');
       return;
     }
-
+    dispatch(removeItem({ cartId }));
+    if (!user) return;
     try {
       // Hapus dari backend dulu
       await customAPI.delete(`/cart/${cartId}`);
 
       // Hapus dari Redux setelah backend sukses
-      dispatch(removeItem({ cartId }));
       dispatch(removeCartItemFromBackend(cartId));
       dispatch(fetchCartFromBackend()); // Ambil cart terbaru dari backend
     } catch (error) {

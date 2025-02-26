@@ -28,6 +28,7 @@ const CartProduct = ({ product, user, className }) => {
 
     // Simpan ke Redux & localStorage
     dispatch(addItem({ product: productCart }));
+    if (!user) return;
 
     try {
       // Kirim data cart ke backend (update jika produk sudah ada)
